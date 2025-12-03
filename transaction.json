@@ -1,0 +1,205 @@
+[
+  {
+    "id": "c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1",
+    "type": "expense",
+    "amount": 32,
+    "category": "food",
+    "description": "Desayuno en panadería",
+    "date": "2024-11-01T08:30:00.000Z"
+  },
+  {
+    "id": "f4ac0c66-0c77-4a61-b9c2-00cf4d693c2b",
+    "type": "income",
+    "amount": 1200,
+    "category": "other",
+    "description": "Pago de salario",
+    "date": "2024-11-01T07:00:00.000Z"
+  },
+  {
+    "id": "1c330f0a-e4b0-4c4a-851f-86e0137aea67",
+    "type": "expense",
+    "amount": 18,
+    "category": "transport",
+    "description": "Bus al trabajo",
+    "date": "2024-11-02T08:20:00.000Z"
+  },
+  {
+    "id": "2fe3fae8-70ce-4f6b-be56-ac6ea05710ed",
+    "type": "expense",
+    "amount": 55,
+    "category": "shopping",
+    "description": "Camiseta nueva",
+    "date": "2024-11-02T19:00:00.000Z"
+  },
+  {
+    "id": "ab0f0b7e-bf76-4a6b-bbdf-9e685b9cb602",
+    "type": "income",
+    "amount": 200,
+    "category": "other",
+    "description": "Venta de accesorios",
+    "date": "2024-11-03T16:10:00.000Z"
+  },
+  {
+    "id": "c7edf644-497d-4e1b-a01b-c6646cc2b053",
+    "type": "expense",
+    "amount": 75,
+    "category": "entertainment",
+    "description": "Cine y palomitas",
+    "date": "2024-11-03T21:30:00.000Z"
+  },
+  {
+    "id": "7aa2cda6-ef0a-4a61-a73d-c95df20b5f6b",
+    "type": "expense",
+    "amount": 100,
+    "category": "utilities",
+    "description": "Pago de luz",
+    "date": "2024-11-04T10:00:00.000Z"
+  },
+  {
+    "id": "16a33f1c-1a42-4c55-a185-114e2a62a8dd",
+    "type": "income",
+    "amount": 350,
+    "category": "other",
+    "description": "Ingreso por freelance",
+    "date": "2024-11-04T14:00:00.000Z"
+  },
+  {
+    "id": "a6bbf727-886c-49e4-9e3e-c6aa4dd0a64b",
+    "type": "expense",
+    "amount": 40,
+    "category": "food",
+    "description": "Almuerzo rápido",
+    "date": "2024-11-05T13:00:00.000Z"
+  },
+  {
+    "id": "ac253e7a-c6be-4a3c-8799-11550ee2ce76",
+    "type": "expense",
+    "amount": 22,
+    "category": "transport",
+    "description": "Uber al centro",
+    "date": "2024-11-05T18:45:00.000Z"
+  },
+
+  {
+    "id": "7fdaee70-3ad7-48c0-95b2-d65049c151cd",
+    "type": "expense",
+    "amount": 120,
+    "category": "health",
+    "description": "Medicinas",
+    "date": "2024-11-06T11:20:00.000Z"
+  },
+  {
+    "id": "13eb6ebd-b41a-42ef-9c74-0b0845e9ec3d",
+    "type": "income",
+    "amount": 150,
+    "category": "other",
+    "description": "Devolución de dinero",
+    "date": "2024-11-06T15:10:00.000Z"
+  },
+  {
+    "id": "8d065af7-32c3-41dd-b92e-2b0e1f414bdc",
+    "type": "expense",
+    "amount": 60,
+    "category": "food",
+    "description": "Cena con amigos",
+    "date": "2024-11-07T21:00:00.000Z"
+  },
+  {
+    "id": "f0fc163d-d555-4ef7-ac55-c44ebeec453e",
+    "type": "expense",
+    "amount": 140,
+    "category": "shopping",
+    "description": "Audífonos nuevos",
+    "date": "2024-11-07T18:00:00.000Z"
+  },
+  {
+    "id": "d261fd43-b832-4fb7-8cb4-e0cfdee1d4ce",
+    "type": "income",
+    "amount": 80,
+    "category": "other",
+    "description": "Clase particular",
+    "date": "2024-11-08T10:30:00.000Z"
+  },
+
+  {
+    "id": "aaf5c02c-a028-47cd-8d2d-d63ed085924a",
+    "type": "expense",
+    "amount": 88,
+    "category": "utilities",
+    "description": "Plan de internet",
+    "date": "2024-11-08T12:00:00.000Z"
+  },
+  {
+    "id": "d64ffc0d-b7c9-42b3-9c30-b477a5782585",
+    "type": "income",
+    "amount": 90,
+    "category": "other",
+    "description": "Reembolso",
+    "date": "2024-11-09T08:50:00.000Z"
+  },
+  {
+    "id": "58d611e8-fc33-4b4e-9b8b-d9d44fb233c7",
+    "type": "expense",
+    "amount": 25,
+    "category": "other",
+    "description": "Material de oficina",
+    "date": "2024-11-09T14:15:00.000Z"
+  },
+  {
+    "id": "3c083ce0-41f5-4b77-b78e-d47ccc3493bb",
+    "type": "expense",
+    "amount": 45,
+    "category": "food",
+    "description": "Almuerzo en restaurante",
+    "date": "2024-11-10T13:00:00.000Z"
+  },
+  {
+    "id": "42bd7adc-55df-44a0-a5a7-7bc383c18dbb",
+    "type": "expense",
+    "amount": 11,
+    "category": "transport",
+    "description": "Bus al mercado",
+    "date": "2024-11-10T16:30:00.000Z"
+  },
+
+  {
+    "id": "b1c89515-8917-4e37-a305-2be8d5e8237d",
+    "type": "income",
+    "amount": 50,
+    "category": "other",
+    "description": "Propina extra",
+    "date": "2024-11-11T18:00:00.000Z"
+  },
+  {
+    "id": "04ecc132-6c7e-44b8-9d01-c8b7df7c9815",
+    "type": "expense",
+    "amount": 30,
+    "category": "entertainment",
+    "description": "Plataforma de streaming",
+    "date": "2024-11-11T20:00:00.000Z"
+  },
+  {
+    "id": "2d1ea394-2c4f-4cc3-bb8b-47736fdd40d3",
+    "type": "expense",
+    "amount": 62,
+    "category": "shopping",
+    "description": "Productos de limpieza",
+    "date": "2024-11-12T09:10:00.000Z"
+  },
+  {
+    "id": "f960cf0a-a6c5-4cf2-98c6-c268b7f50f5b",
+    "type": "income",
+    "amount": 600,
+    "category": "other",
+    "description": "Ingreso adicional mensual",
+    "date": "2024-11-12T07:00:00.000Z"
+  },
+  {
+    "id": "1e4a3dac-7caf-4a9b-907c-ebd43d1b6f0d",
+    "type": "expense",
+    "amount": 19,
+    "category": "food",
+    "description": "Snack en cafetería",
+    "date": "2024-11-12T15:45:00.000Z"
+  }
+]

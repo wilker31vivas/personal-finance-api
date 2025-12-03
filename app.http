@@ -1,0 +1,49 @@
+### Obtener todas las transaction
+GET http://localhost:3000/api/transactions
+
+### Crear transaction
+POST http://localhost:3000/api/transactions
+Content-Type: application/json
+
+{
+    "type": "expense",
+    "amount": 12,
+    "category": "health",
+    "description": "comprar medicina"
+}
+
+### Filtar transaction &category=other&month=11&year=2024
+GET http://localhost:3000/api/transactions?type=expense&category=food&month=11&year=2024
+
+### Obtener transaction por id
+GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+
+### Actualizar una transaction
+PATCH http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+Content-Type: application/json
+
+{
+    "amount": 12,
+    "id": "wilker"
+}
+
+### Eliminar una transaction
+DELETE http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+
+### Ver el balance
+GET http://localhost:3000/api/stats/balance
+
+### Filtrar el balance
+GET http://localhost:3000/api/stats/balance?year=2024&month=11
+
+### Gastos por categoria
+GET http://localhost:3000/api/stats/by-category
+
+### Filtrar gastos por categoria y año
+GET http://localhost:3000/api/stats/by-category?month=11&year=2024
+
+### Resumen mensual
+GET http://localhost:3000/api/stats/monthly
+
+### Top Categories
+GET http://localhost:3000/api/stats/top-categories
