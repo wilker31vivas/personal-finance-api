@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Filtar transaction &category=other&month=11&year=2024
-GET http://localhost:3000/api/transactions?type=expense&category=food&month=11&year=2024
+GET http://localhost:3000/api/transactions?month=12&year=2025
 
 ### Obtener transaction por id
 GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
@@ -47,3 +47,18 @@ GET http://localhost:3000/api/stats/monthly
 
 ### Top Categories
 GET http://localhost:3000/api/stats/top-categories
+
+
+### Ver categorias
+GET http://localhost:3000/api/categories
+
+### Ver categoria por id
+GET http://localhost:3000/api/categories/1
+
+### Crear categoria
+POST http://localhost:3000/api/categories
+Content-Type: application/json
+
+{
+    "name": "Expense home"
+}

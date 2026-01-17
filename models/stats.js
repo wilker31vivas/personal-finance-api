@@ -2,8 +2,7 @@ import { TransactionModel } from "./transaction.js";
 import {
   calculateBalance,
   splitType,
-  calculateAmount,
-  getTopCategoriesByExpense
+  getTopCategoriesByExpense,
 } from "../utils.js";
 
 export class StatsModel {
@@ -41,8 +40,7 @@ export class StatsModel {
       return { total: 0, categories: [] };
     }
 
-    const response = getTopCategoriesByExpense(transactions)
-    
+    const response = getTopCategoriesByExpense(transactions);
 
     return {
       totalGeneral: response.totalGeneral,
@@ -54,7 +52,7 @@ export class StatsModel {
     const date = new Date();
     const currentMonth = date.getMonth() + 1;
     const currentYear = date.getFullYear();
-    const previousMonth = currentMonth === 1 ? 12 - 1 : currentMonth - 1;
+    const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
     const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
     const transactionsExpenseCurrent = await TransactionModel.getAll({
@@ -85,34 +83,37 @@ export class StatsModel {
       year: previousYear,
     });
 
-    function calculateChange(actual, anterior) {
-      if (anterior === 0) {
-        return null;
-      }
-      const porcentaje = ((actual - anterior) / anterior) * 100;
-      return porcentaje;
+    function calculateChange(current, previous) {
+      if (previous === 0) return null;
+      return Number((((current - previous) / previous) * 100).toFixed(2));
     }
 
     const transactionsAmount = {
-      current: {
-        income: calculateAmount(transactionsIncomeCurrent),
-        expense: calculateAmount(transactionsExpenseCurrent),
-      },
-      previous: {
-        income: calculateAmount(transactionsIncomePrevious),
-        expense: calculateAmount(transactionsExpensePrevious),
-      },
+      current: calculateBalance(
+        transactionsExpenseCurrent,
+        transactionsIncomeCurrent
+      ),
+      previous: calculateBalance(
+        transactionsExpensePrevious,
+        transactionsIncomePrevious
+      ),
     };
 
     const change = {
-      income: calculateChange(
-        transactionsAmount.current.income,
-        transactionsAmount.previous.income
-      ),
-      expense: calculateChange(
-        transactionsAmount.current.expense,
-        transactionsAmount.previous.expense
-      ),
+      income:
+        transactionsIncomePrevious.length > 0
+          ? calculateChange(
+              transactionsAmount.current.income,
+              transactionsAmount.previous.income
+            )
+          : null,
+      expense:
+        transactionsExpensePrevious.length > 0
+          ? calculateChange(
+              transactionsAmount.current.expense,
+              transactionsAmount.previous.expense
+            )
+          : null,
     };
 
     return {
@@ -121,7 +122,7 @@ export class StatsModel {
     };
   }
 
-  static async getTopCategories(){
+  static async getTopCategories() {
     const transactions = await TransactionModel.getAll({
       type: "expense",
     });
@@ -130,12 +131,14 @@ export class StatsModel {
       return { total: 0, categories: [] };
     }
 
-    const response = getTopCategoriesByExpense(transactions)
+    const response = getTopCategoriesByExpense(transactions);
 
-    const sortCategories = response.categories.sort((a,b) => b.total- a.total).slice(0, 5)
+    const sortCategories = response.categories
+      .sort((a, b) => b.total - a.total)
+      .slice(0, 5);
 
     return {
-      topCategories: sortCategories
-    }
+      topCategories: sortCategories,
+    };
   }
 }

@@ -62,4 +62,12 @@ export class TransactionController {
 
     res.status(200).json({ message: "Transaction deleted done" });
   }
+
+  static async getYears(req, res){
+    const transactions = await TransactionModel.getAll({});
+    const response = [...new Set(
+    transactions.map(t => new Date(t.date).getFullYear())
+  )].sort((a, b) => b - a)
+    return res.status(200).json(response)
+  }
 }

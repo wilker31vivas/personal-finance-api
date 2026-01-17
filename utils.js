@@ -1,28 +1,31 @@
-export const transactionCategory = [
-  "food",
-  "transport",
-  "entertainment",
-  "utilities",
-  "health",
-  "shopping",
-  "other",
-];
-
 export const transactionType = ["expense", "income"];
 
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const transaction = require("./transaction.json");
+const categories = require('./categories.json')
+
+export function getCategoryNames(){
+  return categories.map((item) => item.name.toLowerCase())
+}
+
+export function getCategories(){
+  return categories
+}
 
 export function getTransactions() {
   return transaction;
 }
 
 export function calculateBalance(arr1, arr2) {
-  let expenseTotal = arr1.map((item) => item.amount).reduce((a, b) => a + b);
-  let incomeTotal = arr2.map((item) => item.amount).reduce((a, b) => a + b);
+  let expenseTotal = arr1.length > 0 ? arr1.map((item) => item.amount).reduce((a, b) => a + b) : null;
+  let incomeTotal = arr2.length > 0 ? arr2.map((item) => item.amount).reduce((a, b) => a + b) : null;
   let totalBalance = incomeTotal - expenseTotal;
-  return totalBalance;
+  return  {
+    expense: expenseTotal,
+    income: incomeTotal,
+    balance: totalBalance
+    };
 }
 
 export function splitType(arr) {

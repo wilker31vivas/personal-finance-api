@@ -1,10 +1,11 @@
 import z from 'zod'
-import {transactionCategory, transactionType} from '../utils.js'
+import {getCategoryNames, transactionType} from '../utils.js'
+const categoryNames = getCategoryNames()
 
 const expensesSchemas = z.object({
     type: z.literal(transactionType),
     amount: z.number().min(1),
-    category: z.literal(transactionCategory),
+    category: z.literal(categoryNames),
     description: z.string(),
 })
 
