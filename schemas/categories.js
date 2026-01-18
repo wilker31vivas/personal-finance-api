@@ -7,7 +7,3 @@ const categoriesSchemas = z.object({
 export function validateCategory(object){
     return categoriesSchemas.safeParse(object)
 }
-
-export function validateCategoriePartial(object){
-    return categoriesSchemas.partial().safeParse(object)
-}

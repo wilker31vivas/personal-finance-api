@@ -5,5 +5,9 @@ import {CategoriesController} from '../controllers/categories.js'
 categoriesRouter.get('/', CategoriesController.getAll)
 categoriesRouter.get('/:id', CategoriesController.geyById)
 categoriesRouter.post('/', CategoriesController.create)
+categoriesRouter.put('/:id', CategoriesController.update)
+categoriesRouter.delete('/:id', CategoriesController.delete)
+
+
 
 

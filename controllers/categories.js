@@ -39,4 +39,34 @@ export class CategoriesController {
     const newCategory = await CategoriesModel.create(response.data);
     return res.status(201).json(newCategory);
   }
+
+  static async update(req, res) {
+    const { id } = req.params;
+    const response = validateCategory(req.body);
+
+    if (response.error) {
+      return res
+        .status(400)
+        .json({ message: JSON.parse(response.error.message) });
+    }
+
+    const updateCategory = await CategoriesModel.update(id, response.data);
+
+    if (!updateCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    return res.status(200).json(updateCategory);
+  }
+
+  static async delete(req, res) {
+    const { id } = req.params;
+    const deleteCategory = await CategoriesModel.delete(id);
+
+    if (!deleteCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.status(200).json({ message: "Category deleted done" });
+  }
 }

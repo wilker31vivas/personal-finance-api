@@ -23,4 +23,29 @@ export class CategoriesModel {
 
     return newCategory;
   }
+
+  static async update(id, input) {
+    const categoryIndex = categories.findIndex((c) => c.id === id);
+
+    if (categoryIndex === -1) return false;
+
+    const partialCategory = {
+      ...categories[categoryIndex],
+      ...input,
+    };
+
+    categories[categoryIndex] = partialCategory;
+
+    return partialCategory;
+  }
+
+  static async delete(id) {
+    const categoryIndex = categories.findIndex((c) => c.id === id);
+
+    if (categoryIndex === -1) return false;
+
+    const deleteCategory = categories.splice(categoryIndex, 1);
+
+    return true;
+  }
 }

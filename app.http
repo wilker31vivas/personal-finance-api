@@ -48,7 +48,6 @@ GET http://localhost:3000/api/stats/monthly
 ### Top Categories
 GET http://localhost:3000/api/stats/top-categories
 
-
 ### Ver categorias
 GET http://localhost:3000/api/categories
 
@@ -62,3 +61,14 @@ Content-Type: application/json
 {
     "name": "Expense home"
 }
+
+### Actualizar categoria
+PUT http://localhost:3000/api/categories/1
+Content-Type: application/json
+
+{
+    "name": "Expense home"
+}
+
+### Eliminar una categoria
+DELETE http://localhost:3000/api/categories/1
