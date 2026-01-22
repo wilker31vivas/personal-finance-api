@@ -61,12 +61,19 @@ export class CategoriesController {
 
   static async delete(req, res) {
     const { id } = req.params;
-    const deleteCategory = await CategoriesModel.delete(id);
+    const result = await CategoriesModel.delete(id);
 
-    if (!deleteCategory) {
+    if (!result.isExists) {
       return res.status(404).json({ message: "Category not found" });
     }
 
-    res.status(200).json({ message: "Category deleted done" });
+    if (result.isUsed) {
+      return res.status(409).json({
+        message:
+          "Cannot delete category. It is currently in use by existing transactions",
+      });
+    }
+
+    res.status(200).json({ message: "Category deleted successfully" });
   }
 }

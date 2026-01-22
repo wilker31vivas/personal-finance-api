@@ -1,5 +1,8 @@
-import { getCategories } from "../utils.js";
+import { array } from "zod";
+import { getCategories, getTransactions } from "../utils.js";
 const categories = getCategories();
+const transaction = getTransactions();
+
 
 export class CategoriesModel {
   static async getAll() {
@@ -41,11 +44,13 @@ export class CategoriesModel {
 
   static async delete(id) {
     const categoryIndex = categories.findIndex((c) => c.id === id);
+    if (categoryIndex === -1) return {isExists: false, isUsed: false};
+    
+    const isUsed = transaction.some((t) => t.category.toLowerCase() === categories[categoryIndex].name.toLowerCase())
+    if (isUsed) return {isExists: true, isUsed: true};
 
-    if (categoryIndex === -1) return false;
+    categories.splice(categoryIndex, 1);
 
-    const deleteCategory = categories.splice(categoryIndex, 1);
-
-    return true;
+    return {isExists: true, isUsed: false };
   }
 }
