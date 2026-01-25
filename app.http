@@ -34,23 +34,25 @@ DELETE http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14
 GET http://localhost:3000/api/stats/balance
 
 ### Filtrar el balance
-GET http://localhost:3000/api/stats/balance?year=2024&month=11
+GET http://localhost:3000/api/stats/balance?year=2024&month=12
 
 ### Gastos por categoria
 GET http://localhost:3000/api/stats/by-category
 
-### Filtrar gastos por categoria y año
+### Filtrar Gastos por categoria por mes y año
 GET http://localhost:3000/api/stats/by-category?month=11&year=2024
 
 ### Resumen mensual
 GET http://localhost:3000/api/stats/monthly
 
+### Filtrar resumen mensual por mes y año
+GET http://localhost:3000/api/stats/monthly?month=2&year=2024
+
 ### Top Categories
 GET http://localhost:3000/api/stats/top-categories
 
 ###Top categorias por filtro 
-GET http://localhost:3000/api/stats/top-categories?month=11y&year=2024
-
+GET http://localhost:3000/api/stats/top-categories?month=12y&year=2024
 
 ### Ver categorias
 GET http://localhost:3000/api/categories

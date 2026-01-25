@@ -5,6 +5,6 @@ import { StatsController } from "../controllers/stats.js";
 
 routerStats.get("/balance", vaildateMonth, validateYear, StatsController.getBalance);
 routerStats.get("/by-category",vaildateMonth, validateYear, StatsController.getByCategory);
-routerStats.get('/monthly', StatsController.getSummaryMonthly)
-routerStats.get('/top-categories', StatsController.getTopCategories)
+routerStats.get('/monthly',vaildateMonth, validateYear, StatsController.getSummaryMonthly)
+routerStats.get('/top-categories',vaildateMonth, validateYear, StatsController.getTopCategories)
 

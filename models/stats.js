@@ -37,7 +37,7 @@ export class StatsModel {
     });
 
     if (transactions.length === 0) {
-      return { total: 0, categories: [] };
+      return [];
     }
 
     const response = getTopCategoriesByExpense(transactions);
@@ -45,10 +45,10 @@ export class StatsModel {
     return response;
   }
 
-  static async getSummaryMonthly() {
+  static async getSummaryMonthly({ month, year }) {
     const date = new Date();
-    const currentMonth = date.getMonth() + 1;
-    const currentYear = date.getFullYear();
+    const currentMonth = month ? month : date.getMonth() + 1;
+    const currentYear = year ? year : date.getFullYear();
     const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
     const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
@@ -90,10 +90,14 @@ export class StatsModel {
         transactionsExpenseCurrent,
         transactionsIncomeCurrent,
       ),
-      previous: calculateBalance(
-        transactionsExpensePrevious,
-        transactionsIncomePrevious,
-      ),
+      previous:
+        transactionsIncomePrevious.length > 0 &&
+        transactionsExpensePrevious.length > 0
+          ? calculateBalance(
+              transactionsExpensePrevious,
+              transactionsIncomePrevious,
+            )
+          : [],
     };
 
     const change = {
@@ -109,6 +113,13 @@ export class StatsModel {
           ? calculateChange(
               transactionsAmount.current.expense,
               transactionsAmount.previous.expense,
+            )
+          : null,
+      balance:
+        transactionsIncomePrevious.length > 0
+          ? calculateChange(
+              transactionsAmount.current.balance,
+              transactionsAmount.previous.balance,
             )
           : null,
     };
@@ -131,7 +142,7 @@ export class StatsModel {
       return [];
     }
 
-    const response  = getTopCategoriesByExpense(transactions) || [];
+    const response = getTopCategoriesByExpense(transactions) || [];
 
     return response.sort((a, b) => b.value - a.value).slice(0, 5);
   }

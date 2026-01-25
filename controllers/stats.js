@@ -14,7 +14,8 @@ export class StatsController {
   }
 
   static async getSummaryMonthly(req, res) {
-    const response = await StatsModel.getSummaryMonthly();
+    const { month, year } = req.query;
+    const response = await StatsModel.getSummaryMonthly({ month, year });
     return res.json(response)
   }
 
