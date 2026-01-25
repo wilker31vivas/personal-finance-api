@@ -240,5 +240,14 @@
     "category": "health",
     "description": "Medical supplies purchase",
     "date": "2026-01-14T19:00:00.000Z"
+  },
+  {
+    "id": "c3f00310-cccc-4c33-b333-000000000030",
+    "type": "expense",
+    "amount": 85,
+    "category": "Sports",
+    "description": "buy ball",
+    "date": "2026-01-14T19:00:00.000Z"
   }
+  
 ]

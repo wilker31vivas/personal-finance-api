@@ -42,10 +42,7 @@ export class StatsModel {
 
     const response = getTopCategoriesByExpense(transactions);
 
-    return {
-      totalGeneral: response.totalGeneral,
-      categories: response.categories,
-    };
+    return response;
   }
 
   static async getSummaryMonthly() {
@@ -91,11 +88,11 @@ export class StatsModel {
     const transactionsAmount = {
       current: calculateBalance(
         transactionsExpenseCurrent,
-        transactionsIncomeCurrent
+        transactionsIncomeCurrent,
       ),
       previous: calculateBalance(
         transactionsExpensePrevious,
-        transactionsIncomePrevious
+        transactionsIncomePrevious,
       ),
     };
 
@@ -104,14 +101,14 @@ export class StatsModel {
         transactionsIncomePrevious.length > 0
           ? calculateChange(
               transactionsAmount.current.income,
-              transactionsAmount.previous.income
+              transactionsAmount.previous.income,
             )
           : null,
       expense:
         transactionsExpensePrevious.length > 0
           ? calculateChange(
               transactionsAmount.current.expense,
-              transactionsAmount.previous.expense
+              transactionsAmount.previous.expense,
             )
           : null,
     };
@@ -122,23 +119,20 @@ export class StatsModel {
     };
   }
 
-  static async getTopCategories() {
+  static async getTopCategories({ month, year }) {
     const transactions = await TransactionModel.getAll({
       type: "expense",
+      category: null,
+      month: month,
+      year: year,
     });
 
     if (transactions.length === 0) {
-      return { total: 0, categories: [] };
+      return [];
     }
 
-    const response = getTopCategoriesByExpense(transactions);
+    const response  = getTopCategoriesByExpense(transactions) || [];
 
-    const sortCategories = response.categories
-      .sort((a, b) => b.total - a.total)
-      .slice(0, 5);
-
-    return {
-      topCategories: sortCategories,
-    };
+    return response.sort((a, b) => b.value - a.value).slice(0, 5);
   }
 }

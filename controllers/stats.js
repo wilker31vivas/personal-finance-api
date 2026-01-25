@@ -19,7 +19,8 @@ export class StatsController {
   }
 
   static async getTopCategories(req, res){
-    const response = await StatsModel.getTopCategories();
+    const { month, year } = req.query;
+    const response = await StatsModel.getTopCategories({ month, year });
     return res.json(response)
   }
 }
