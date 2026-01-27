@@ -7,44 +7,32 @@ export class TransactionModel {
 
     if (type) {
       const typeNormalized = type.toLowerCase();
-
-      const filterByType = filterTransaction.filter(
-        (t) => t.type === typeNormalized
+      filterTransaction = filterTransaction.filter(
+        (t) => t.type === typeNormalized,
       );
-
-      filterTransaction = filterByType;
     }
 
     if (category) {
       const categoryNormalized = category.toLowerCase();
-
-      const filterByCategory = filterTransaction.filter(
-        (t) => t.category === categoryNormalized
+      filterTransaction = filterTransaction.filter(
+        (t) => t.category === categoryNormalized,
       );
-
-      filterTransaction = filterByCategory;
     }
 
     if (month) {
       const monthNormalized = Number(month);
-
-      const filterByMonth = filterTransaction.filter((t) => {
+      filterTransaction = filterTransaction.filter((t) => {
         const dateFilter = new Date(t.date);
         return dateFilter.getMonth() === monthNormalized - 1;
       });
-
-      filterTransaction = filterByMonth;
     }
 
     if (year) {
       const yearNormalized = Number(year);
-
-      const filterByYear = filterTransaction.filter((t) => {
+      filterTransaction = filterTransaction.filter((t) => {
         const dateYear = new Date(t.date);
         return dateYear.getFullYear() === yearNormalized;
       });
-
-      filterTransaction = filterByYear;
     }
 
     return filterTransaction;

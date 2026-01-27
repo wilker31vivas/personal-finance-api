@@ -46,7 +46,7 @@ GET http://localhost:3000/api/stats/by-category?month=11&year=2024
 GET http://localhost:3000/api/stats/monthly
 
 ### Filtrar resumen mensual por mes y año
-GET http://localhost:3000/api/stats/monthly?month=2&year=2024
+GET http://localhost:3000/api/stats/monthly?month=01&year=2024
 
 ### Top Categories
 GET http://localhost:3000/api/stats/top-categories

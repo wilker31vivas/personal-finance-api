@@ -17,15 +17,15 @@ export function getTransactions() {
   return transaction;
 }
 
-export function calculateBalance(arr1, arr2) {
-  let expenseTotal =
-    arr1.length > 0
-      ? arr1.map((item) => item.amount).reduce((a, b) => a + b)
-      : null;
-  let incomeTotal =
-    arr2.length > 0
-      ? arr2.map((item) => item.amount).reduce((a, b) => a + b)
-      : null;
+export function calculateBalance(expenses, incomes) {
+  const expenseTotal = expenses.reduce(
+    (sum, item) => sum + (Number(item.amount) || 0),
+    0,
+  );
+  const incomeTotal = incomes.reduce(
+    (sum, item) => sum + (Number(item.amount) || 0),
+    0,
+  );
   let totalBalance = incomeTotal - expenseTotal;
   return {
     expense: expenseTotal,

@@ -23,5 +23,5 @@ app.use('/api/categories', categoriesRouter)
 const PORT = process.env.PORT ?? 3000;
 
 app.listen(PORT, () => {
-  console.log("Servidor ejecutandose");
+  console.log("Servidor ejecutandose", PORT);
 });

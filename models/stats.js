@@ -14,12 +14,7 @@ export class StatsModel {
       year: year,
     });
 
-    if (transactions.length == 0) return 0;
-
-    if (transactions.length == 1) {
-      const t = transactions[0];
-      return t.type === "expense" ? -t.amount : t.amount;
-    }
+    if (transactions.length == 0) return null;
 
     const { expenseType, incomeType } = splitType(transactions);
 
@@ -47,40 +42,45 @@ export class StatsModel {
 
   static async getSummaryMonthly({ month, year }) {
     const date = new Date();
-    const currentMonth = month ? month : date.getMonth() + 1;
-    const currentYear = year ? year : date.getFullYear();
+    const currentMonth = month ? Number(month) : date.getMonth() + 1;
+    const currentYear = year ? Number(year) : date.getFullYear();
     const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
     const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
-    const transactionsExpenseCurrent = await TransactionModel.getAll({
-      type: "expense",
-      category: null,
-      month: currentMonth,
-      year: currentYear,
-    });
-
-    const transactionsIncomeCurrent = await TransactionModel.getAll({
-      type: "income",
-      category: null,
-      month: currentMonth,
-      year: currentYear,
-    });
-
-    const transactionsExpensePrevious = await TransactionModel.getAll({
-      type: "expense",
-      category: null,
-      month: previousMonth,
-      year: previousYear,
-    });
-
-    const transactionsIncomePrevious = await TransactionModel.getAll({
-      type: "income",
-      category: null,
-      month: previousMonth,
-      year: previousYear,
-    });
+    const [
+      transactionsExpenseCurrent,
+      transactionsIncomeCurrent,
+      transactionsExpensePrevious,
+      transactionsIncomePrevious,
+    ] = await Promise.all([
+      TransactionModel.getAll({
+        type: "expense",
+        category: null,
+        month: currentMonth,
+        year: currentYear,
+      }),
+      TransactionModel.getAll({
+        type: "income",
+        category: null,
+        month: currentMonth,
+        year: currentYear,
+      }),
+      TransactionModel.getAll({
+        type: "expense",
+        category: null,
+        month: previousMonth,
+        year: previousYear,
+      }),
+      TransactionModel.getAll({
+        type: "income",
+        category: null,
+        month: previousMonth,
+        year: previousYear,
+      }),
+    ]);
 
     function calculateChange(current, previous) {
+      if (previous === 0 && current === 0) return null;
       if (previous === 0) return null;
       return Number((((current - previous) / previous) * 100).toFixed(2));
     }
@@ -90,38 +90,31 @@ export class StatsModel {
         transactionsExpenseCurrent,
         transactionsIncomeCurrent,
       ),
-      previous:
-        transactionsIncomePrevious.length > 0 &&
-        transactionsExpensePrevious.length > 0
-          ? calculateBalance(
-              transactionsExpensePrevious,
-              transactionsIncomePrevious,
-            )
-          : [],
+      previous: calculateBalance(
+        transactionsExpensePrevious,
+        transactionsIncomePrevious,
+      ),
     };
 
     const change = {
-      income:
-        transactionsIncomePrevious.length > 0
-          ? calculateChange(
-              transactionsAmount.current.income,
-              transactionsAmount.previous.income,
-            )
-          : null,
-      expense:
-        transactionsExpensePrevious.length > 0
-          ? calculateChange(
-              transactionsAmount.current.expense,
-              transactionsAmount.previous.expense,
-            )
-          : null,
-      balance:
-        transactionsIncomePrevious.length > 0
-          ? calculateChange(
-              transactionsAmount.current.balance,
-              transactionsAmount.previous.balance,
-            )
-          : null,
+      expense: transactionsAmount.previous
+        ? calculateChange(
+            transactionsAmount.current.expense,
+            transactionsAmount.previous.expense,
+          )
+        : null,
+      income: transactionsAmount.previous
+        ? calculateChange(
+            transactionsAmount.current.income,
+            transactionsAmount.previous.income,
+          )
+        : null,
+      balance: transactionsAmount.previous
+        ? calculateChange(
+            transactionsAmount.current.balance,
+            transactionsAmount.previous.balance,
+          )
+        : null,
     };
 
     return {
