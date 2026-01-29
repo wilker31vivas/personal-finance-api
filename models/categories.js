@@ -1,5 +1,4 @@
-import { array } from "zod";
-import { getCategories, getTransactions } from "../utils.js";
+import { getCategories, getTransactions, capitalizeFirstLetter } from "../utils.js";
 const categories = getCategories();
 const transaction = getTransactions();
 
@@ -19,7 +18,7 @@ export class CategoriesModel {
         categories.length > 0
           ? (Math.max(...categories.map((c) => c.id)) + 1).toString()
           : 1,
-      ...input,
+      name: capitalizeFirstLetter(input.name),
     };
 
     categories.push(newCategory);

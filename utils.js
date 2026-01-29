@@ -69,11 +69,18 @@ export function getTopCategoriesByExpense(transactions) {
   const categories = Object.entries(transactionByCategory).map(
     ([name, data]) => {
       return {
-        name,
+        name: capitalizeFirstLetter(name),
         value: data.total,
       };
     },
   );
 
   return categories;
+}
+
+export function capitalizeFirstLetter(string) {
+  if (string.length === 0) {
+    return ""; 
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
