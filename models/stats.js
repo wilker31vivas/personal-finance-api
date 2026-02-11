@@ -8,10 +8,8 @@ import {
 export class StatsModel {
   static async getBalance({ month, year }) {
     const transactions = await TransactionModel.getAll({
-      type: null,
-      category: null,
-      month: month,
-      year: year,
+      month,
+      year,
     });
 
     if (transactions.length == 0) return null;
@@ -151,9 +149,8 @@ export class StatsModel {
   static async getTopCategories({ month, year }) {
     const transactions = await TransactionModel.getAll({
       type: "expense",
-      category: null,
-      month: month,
-      year: year,
+      month,
+      year,
     });
 
     if (transactions.length === 0) {

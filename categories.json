@@ -25,6 +25,10 @@
     },
     {
         "id": "7",
+        "name": "Salary"
+    },
+    {
+        "id": "7",
         "name": "Other"
     }
 ]

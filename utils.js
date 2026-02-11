@@ -20,14 +20,14 @@ export function getTransactions() {
 export function calculateBalance(expenses, incomes) {
   const expenseTotal = expenses.reduce(
     (sum, item) => sum + (Number(item.amount) || 0),
-    null,
+    0,
   );
   const incomeTotal = incomes.reduce(
     (sum, item) => sum + (Number(item.amount) || 0),
-    null,
+    0,
   );
 
-  let totalBalance = incomeTotal && expenseTotal ?  incomeTotal - expenseTotal : null;
+  let totalBalance = incomeTotal - expenseTotal;
 
   return {
     expense: expenseTotal,

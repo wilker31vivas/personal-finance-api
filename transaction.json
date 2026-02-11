@@ -2,251 +2,1057 @@
   {
     "id": "a1f00101-aaaa-4a11-b111-000000000001",
     "type": "income",
-    "amount": 1200,
-    "category": "other",
-    "description": "Monthly income payment",
-    "date": "2024-01-05T07:00:00.000Z"
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-01-05T08:00:00.000Z"
   },
   {
     "id": "a1f00102-aaaa-4a11-b111-000000000002",
     "type": "expense",
-    "amount": 45,
-    "category": "food",
-    "description": "Groceries from local market",
-    "date": "2024-02-10T18:30:00.000Z"
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-01-10T10:30:00.000Z"
   },
   {
     "id": "a1f00103-aaaa-4a11-b111-000000000003",
-    "type": "income",
-    "amount": 300,
-    "category": "other",
-    "description": "Freelance project payment",
-    "date": "2024-03-15T14:00:00.000Z"
+    "type": "expense",
+    "amount": 120,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2024-01-12T14:20:00.000Z"
   },
   {
     "id": "a1f00104-aaaa-4a11-b111-000000000004",
     "type": "expense",
-    "amount": 60,
-    "category": "transport",
-    "description": "Monthly transportation costs",
-    "date": "2024-04-02T11:20:00.000Z"
+    "amount": 45,
+    "category": "Transport",
+    "description": "Gas station",
+    "date": "2024-01-15T09:15:00.000Z"
   },
   {
     "id": "a1f00105-aaaa-4a11-b111-000000000005",
-    "type": "income",
-    "amount": 150,
-    "category": "other",
-    "description": "Cashback and refunds",
-    "date": "2024-05-20T09:00:00.000Z"
+    "type": "expense",
+    "amount": 60,
+    "category": "Entertainment",
+    "description": "Movie tickets and dinner",
+    "date": "2024-01-20T19:00:00.000Z"
   },
   {
-    "id": "a1f00106-aaaa-4a11-b111-000000000006",
+    "id": "a1f00201-aaaa-4a11-b111-000000000006",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-02-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00202-aaaa-4a11-b111-000000000007",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-02-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00203-aaaa-4a11-b111-000000000008",
+    "type": "expense",
+    "amount": 95,
+    "category": "Food",
+    "description": "Supermarket",
+    "date": "2024-02-14T16:45:00.000Z"
+  },
+  {
+    "id": "a1f00204-aaaa-4a11-b111-000000000009",
+    "type": "income",
+    "amount": 200,
+    "category": "Other",
+    "description": "Freelance project",
+    "date": "2024-02-18T11:20:00.000Z"
+  },
+  {
+    "id": "a1f00205-aaaa-4a11-b111-000000000010",
+    "type": "expense",
+    "amount": 150,
+    "category": "Shopping",
+    "description": "Clothing store",
+    "date": "2024-02-25T15:30:00.000Z"
+  },
+  {
+    "id": "a1f00301-aaaa-4a11-b111-000000000011",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-03-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00302-aaaa-4a11-b111-000000000012",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-03-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00303-aaaa-4a11-b111-000000000013",
+    "type": "expense",
+    "amount": 110,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2024-03-08T13:00:00.000Z"
+  },
+  {
+    "id": "a1f00304-aaaa-4a11-b111-000000000014",
+    "type": "expense",
+    "amount": 80,
+    "category": "Health",
+    "description": "Pharmacy - medications",
+    "date": "2024-03-15T10:45:00.000Z"
+  },
+  {
+    "id": "a1f00305-aaaa-4a11-b111-000000000015",
+    "type": "expense",
+    "amount": 35,
+    "category": "Transport",
+    "description": "Public transport card",
+    "date": "2024-03-20T08:30:00.000Z"
+  },
+  {
+    "id": "a1f00401-aaaa-4a11-b111-000000000016",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-04-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00402-aaaa-4a11-b111-000000000017",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-04-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00403-aaaa-4a11-b111-000000000018",
+    "type": "expense",
+    "amount": 125,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2024-04-12T17:20:00.000Z"
+  },
+  {
+    "id": "a1f00404-aaaa-4a11-b111-000000000019",
     "type": "expense",
     "amount": 90,
-    "category": "utilities",
-    "description": "Electricity and water bill",
-    "date": "2024-06-08T22:00:00.000Z"
+    "category": "Entertainment",
+    "description": "Concert tickets",
+    "date": "2024-04-18T20:00:00.000Z"
   },
   {
-    "id": "a1f00107-aaaa-4a11-b111-000000000007",
+    "id": "a1f00405-aaaa-4a11-b111-000000000020",
     "type": "income",
-    "amount": 500,
-    "category": "other",
-    "description": "Side business income",
+    "amount": 150,
+    "category": "Other",
+    "description": "Tax refund",
+    "date": "2024-04-22T09:00:00.000Z"
+  },
+  {
+    "id": "a1f00501-aaaa-4a11-b111-000000000021",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-05-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00502-aaaa-4a11-b111-000000000022",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-05-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00503-aaaa-4a11-b111-000000000023",
+    "type": "expense",
+    "amount": 105,
+    "category": "Food",
+    "description": "Supermarket shopping",
+    "date": "2024-05-14T15:30:00.000Z"
+  },
+  {
+    "id": "a1f00504-aaaa-4a11-b111-000000000024",
+    "type": "expense",
+    "amount": 200,
+    "category": "Shopping",
+    "description": "Electronics store - headphones",
+    "date": "2024-05-20T12:00:00.000Z"
+  },
+  {
+    "id": "a1f00505-aaaa-4a11-b111-000000000025",
+    "type": "expense",
+    "amount": 50,
+    "category": "Transport",
+    "description": "Car maintenance",
+    "date": "2024-05-25T11:15:00.000Z"
+  },
+  {
+    "id": "a1f00601-aaaa-4a11-b111-000000000026",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-06-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00602-aaaa-4a11-b111-000000000027",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-06-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00603-aaaa-4a11-b111-000000000028",
+    "type": "expense",
+    "amount": 140,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2024-06-08T14:00:00.000Z"
+  },
+  {
+    "id": "a1f00604-aaaa-4a11-b111-000000000029",
+    "type": "expense",
+    "amount": 75,
+    "category": "Entertainment",
+    "description": "Streaming subscriptions",
+    "date": "2024-06-15T09:00:00.000Z"
+  },
+  {
+    "id": "a1f00605-aaaa-4a11-b111-000000000030",
+    "type": "income",
+    "amount": 300,
+    "category": "Other",
+    "description": "Bonus payment",
+    "date": "2024-06-28T10:00:00.000Z"
+  },
+  {
+    "id": "a1f00701-aaaa-4a11-b111-000000000031",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-07-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00702-aaaa-4a11-b111-000000000032",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-07-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00703-aaaa-4a11-b111-000000000033",
+    "type": "expense",
+    "amount": 115,
+    "category": "Food",
+    "description": "Grocery store",
     "date": "2024-07-12T16:45:00.000Z"
   },
   {
-    "id": "a1f00108-aaaa-4a11-b111-000000000008",
+    "id": "a1f00704-aaaa-4a11-b111-000000000034",
+    "type": "expense",
+    "amount": 180,
+    "category": "Health",
+    "description": "Dental checkup",
+    "date": "2024-07-18T11:00:00.000Z"
+  },
+  {
+    "id": "a1f00705-aaaa-4a11-b111-000000000035",
+    "type": "expense",
+    "amount": 95,
+    "category": "Entertainment",
+    "description": "Weekend trip",
+    "date": "2024-07-26T07:30:00.000Z"
+  },
+  {
+    "id": "a1f00801-aaaa-4a11-b111-000000000036",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-08-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00802-aaaa-4a11-b111-000000000037",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-08-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00803-aaaa-4a11-b111-000000000038",
+    "type": "expense",
+    "amount": 130,
+    "category": "Food",
+    "description": "Supermarket shopping",
+    "date": "2024-08-15T13:20:00.000Z"
+  },
+  {
+    "id": "a1f00804-aaaa-4a11-b111-000000000039",
+    "type": "expense",
+    "amount": 60,
+    "category": "Transport",
+    "description": "Taxi services",
+    "date": "2024-08-20T22:15:00.000Z"
+  },
+  {
+    "id": "a1f00805-aaaa-4a11-b111-000000000040",
+    "type": "expense",
+    "amount": 250,
+    "category": "Shopping",
+    "description": "Summer clothes",
+    "date": "2024-08-25T14:30:00.000Z"
+  },
+  {
+    "id": "a1f00901-aaaa-4a11-b111-000000000041",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-09-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f00902-aaaa-4a11-b111-000000000042",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-09-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f00903-aaaa-4a11-b111-000000000043",
+    "type": "expense",
+    "amount": 100,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2024-09-13T15:00:00.000Z"
+  },
+  {
+    "id": "a1f00904-aaaa-4a11-b111-000000000044",
+    "type": "income",
+    "amount": 250,
+    "category": "Other",
+    "description": "Freelance work",
+    "date": "2024-09-18T12:00:00.000Z"
+  },
+  {
+    "id": "a1f00905-aaaa-4a11-b111-000000000045",
+    "type": "expense",
+    "amount": 45,
+    "category": "Entertainment",
+    "description": "Book purchases",
+    "date": "2024-09-22T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01001-aaaa-4a11-b111-000000000046",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-10-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01002-aaaa-4a11-b111-000000000047",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-10-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01003-aaaa-4a11-b111-000000000048",
+    "type": "expense",
+    "amount": 135,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2024-10-12T14:30:00.000Z"
+  },
+  {
+    "id": "a1f01004-aaaa-4a11-b111-000000000049",
     "type": "expense",
     "amount": 120,
-    "category": "shopping",
-    "description": "Clothes and accessories",
-    "date": "2024-08-19T13:10:00.000Z"
+    "category": "Health",
+    "description": "Health insurance",
+    "date": "2024-10-15T09:00:00.000Z"
   },
   {
-    "id": "a1f00109-aaaa-4a11-b111-000000000009",
-    "type": "income",
-    "amount": 200,
-    "category": "other",
-    "description": "Online sales earnings",
-    "date": "2024-10-01T10:00:00.000Z"
-  },
-  {
-    "id": "a1f00110-aaaa-4a11-b111-000000000010",
+    "id": "a1f01005-aaaa-4a11-b111-000000000050",
     "type": "expense",
-    "amount": 75,
-    "category": "health",
-    "description": "Pharmacy and health products",
-    "date": "2024-12-03T19:40:00.000Z"
+    "amount": 70,
+    "category": "Transport",
+    "description": "Gas and parking",
+    "date": "2024-10-20T18:00:00.000Z"
   },
   {
-    "id": "b2f00201-bbbb-4b22-b222-000000000011",
+    "id": "a1f01101-aaaa-4a11-b111-000000000051",
     "type": "income",
-    "amount": 1300,
-    "category": "other",
-    "description": "Monthly income payment",
-    "date": "2025-01-04T07:00:00.000Z"
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-11-05T08:00:00.000Z"
   },
   {
-    "id": "b2f00202-bbbb-4b22-b222-000000000012",
+    "id": "a1f01102-aaaa-4a11-b111-000000000052",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-11-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01103-aaaa-4a11-b111-000000000053",
+    "type": "expense",
+    "amount": 145,
+    "category": "Food",
+    "description": "Supermarket",
+    "date": "2024-11-08T16:00:00.000Z"
+  },
+  {
+    "id": "a1f01104-aaaa-4a11-b111-000000000054",
+    "type": "expense",
+    "amount": 300,
+    "category": "Shopping",
+    "description": "Black Friday shopping",
+    "date": "2024-11-29T12:00:00.000Z"
+  },
+  {
+    "id": "a1f01105-aaaa-4a11-b111-000000000055",
+    "type": "expense",
+    "amount": 80,
+    "category": "Entertainment",
+    "description": "Restaurant dinner",
+    "date": "2024-11-16T20:00:00.000Z"
+  },
+  {
+    "id": "a1f01201-aaaa-4a11-b111-000000000056",
+    "type": "income",
+    "amount": 3500,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2024-12-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01202-aaaa-4a11-b111-000000000057",
+    "type": "income",
+    "amount": 500,
+    "category": "Other",
+    "description": "Year-end bonus",
+    "date": "2024-12-20T10:00:00.000Z"
+  },
+  {
+    "id": "a1f01203-aaaa-4a11-b111-000000000058",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2024-12-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01204-aaaa-4a11-b111-000000000059",
+    "type": "expense",
+    "amount": 160,
+    "category": "Food",
+    "description": "Holiday groceries",
+    "date": "2024-12-15T17:30:00.000Z"
+  },
+  {
+    "id": "a1f01205-aaaa-4a11-b111-000000000060",
+    "type": "expense",
+    "amount": 400,
+    "category": "Shopping",
+    "description": "Christmas gifts",
+    "date": "2024-12-22T11:00:00.000Z"
+  },
+  {
+    "id": "a1f01206-aaaa-4a11-b111-000000000061",
+    "type": "expense",
+    "amount": 150,
+    "category": "Entertainment",
+    "description": "New Year celebration",
+    "date": "2024-12-31T22:00:00.000Z"
+  },
+  {
+    "id": "a1f01301-aaaa-4a11-b111-000000000062",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-01-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01302-aaaa-4a11-b111-000000000063",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-01-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01303-aaaa-4a11-b111-000000000064",
+    "type": "expense",
+    "amount": 110,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2025-01-12T14:00:00.000Z"
+  },
+  {
+    "id": "a1f01304-aaaa-4a11-b111-000000000065",
+    "type": "expense",
+    "amount": 200,
+    "category": "Health",
+    "description": "Gym membership - annual",
+    "date": "2025-01-08T09:00:00.000Z"
+  },
+  {
+    "id": "a1f01305-aaaa-4a11-b111-000000000066",
     "type": "expense",
     "amount": 55,
-    "category": "food",
-    "description": "Restaurant lunch",
+    "category": "Transport",
+    "description": "Public transport pass",
+    "date": "2025-01-15T08:30:00.000Z"
+  },
+  {
+    "id": "a1f01401-aaaa-4a11-b111-000000000067",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-02-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01402-aaaa-4a11-b111-000000000068",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-02-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01403-aaaa-4a11-b111-000000000069",
+    "type": "expense",
+    "amount": 125,
+    "category": "Food",
+    "description": "Weekly groceries",
     "date": "2025-02-14T15:00:00.000Z"
   },
   {
-    "id": "b2f00203-bbbb-4b22-b222-000000000013",
-    "type": "income",
-    "amount": 400,
-    "category": "other",
-    "description": "Freelance consulting payment",
-    "date": "2025-03-11T12:00:00.000Z"
-  },
-  {
-    "id": "b2f00204-bbbb-4b22-b222-000000000014",
+    "id": "a1f01404-aaaa-4a11-b111-000000000070",
     "type": "expense",
-    "amount": 70,
-    "category": "transport",
-    "description": "Fuel and public transport",
-    "date": "2025-04-06T08:30:00.000Z"
+    "amount": 90,
+    "category": "Entertainment",
+    "description": "Valentine's dinner",
+    "date": "2025-02-14T20:00:00.000Z"
   },
   {
-    "id": "b2f00205-bbbb-4b22-b222-000000000015",
-    "type": "income",
-    "amount": 250,
-    "category": "other",
-    "description": "Digital product sales",
-    "date": "2025-05-18T17:20:00.000Z"
-  },
-  {
-    "id": "b2f00206-bbbb-4b22-b222-000000000016",
-    "type": "expense",
-    "amount": 110,
-    "category": "utilities",
-    "description": "Internet and phone bill",
-    "date": "2025-06-09T21:00:00.000Z"
-  },
-  {
-    "id": "b2f00207-bbbb-4b22-b222-000000000017",
-    "type": "income",
-    "amount": 600,
-    "category": "other",
-    "description": "Bonus payment",
-    "date": "2025-07-22T10:10:00.000Z"
-  },
-  {
-    "id": "b2f00208-bbbb-4b22-b222-000000000018",
-    "type": "expense",
-    "amount": 140,
-    "category": "entertainment",
-    "description": "Concert and events",
-    "date": "2025-08-30T23:00:00.000Z"
-  },
-  {
-    "id": "b2f00209-bbbb-4b22-b222-000000000019",
+    "id": "a1f01405-aaaa-4a11-b111-000000000071",
     "type": "income",
     "amount": 180,
-    "category": "other",
-    "description": "Marketplace sales",
-    "date": "2025-12-05T09:30:00.000Z"
+    "category": "Other",
+    "description": "Sold old furniture",
+    "date": "2025-02-20T13:00:00.000Z"
   },
   {
-    "id": "b2f00210-bbbb-4b22-b222-000000000020",
-    "type": "expense",
-    "amount": 95,
-    "category": "shopping",
-    "description": "Home supplies purchase",
-    "date": "2025-12-12T18:50:00.000Z"
-  },
-
-  {
-    "id": "c3f00301-cccc-4c33-b333-000000000021",
+    "id": "a1f01501-aaaa-4a11-b111-000000000072",
     "type": "income",
-    "amount": 1400,
-    "category": "other",
-    "description": "Monthly income payment",
-    "date": "2026-01-02T07:00:00.000Z"
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-03-05T08:00:00.000Z"
   },
   {
-    "id": "c3f00302-cccc-4c33-b333-000000000022",
+    "id": "a1f01502-aaaa-4a11-b111-000000000073",
     "type": "expense",
-    "amount": 50,
-    "category": "food",
-    "description": "Weekly grocery shopping",
-    "date": "2026-01-06T16:00:00.000Z"
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-03-10T10:30:00.000Z"
   },
   {
-    "id": "c3f00303-cccc-4c33-b333-000000000023",
-    "type": "income",
-    "amount": 350,
-    "category": "other",
-    "description": "Client project payment",
-    "date": "2026-01-08T11:30:00.000Z"
+    "id": "a1f01503-aaaa-4a11-b111-000000000074",
+    "type": "expense",
+    "amount": 115,
+    "category": "Food",
+    "description": "Supermarket shopping",
+    "date": "2025-03-13T16:30:00.000Z"
   },
   {
-    "id": "c3f00304-cccc-4c33-b333-000000000024",
+    "id": "a1f01504-aaaa-4a11-b111-000000000075",
+    "type": "expense",
+    "amount": 170,
+    "category": "Shopping",
+    "description": "Spring wardrobe update",
+    "date": "2025-03-22T12:00:00.000Z"
+  },
+  {
+    "id": "a1f01505-aaaa-4a11-b111-000000000076",
     "type": "expense",
     "amount": 65,
-    "category": "transport",
-    "description": "Transportation expenses",
-    "date": "2026-01-10T09:00:00.000Z"
+    "category": "Transport",
+    "description": "Car fuel",
+    "date": "2025-03-28T10:00:00.000Z"
   },
   {
-    "id": "c3f00305-cccc-4c33-b333-000000000025",
+    "id": "a1f01601-aaaa-4a11-b111-000000000077",
     "type": "income",
-    "amount": 220,
-    "category": "other",
-    "description": "Online service earnings",
-    "date": "2026-01-11T14:45:00.000Z"
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-04-05T08:00:00.000Z"
   },
   {
-    "id": "c3f00306-cccc-4c33-b333-000000000026",
+    "id": "a1f01602-aaaa-4a11-b111-000000000078",
     "type": "expense",
-    "amount": 100,
-    "category": "utilities",
-    "description": "Monthly utility expenses",
-    "date": "2026-01-12T20:10:00.000Z"
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-04-10T10:30:00.000Z"
   },
   {
-    "id": "c3f00307-cccc-4c33-b333-000000000027",
-    "type": "income",
-    "amount": 480,
-    "category": "other",
-    "description": "Extra work income",
-    "date": "2026-01-13T10:00:00.000Z"
-  },
-  {
-    "id": "c3f00308-cccc-4c33-b333-000000000028",
+    "id": "a1f01603-aaaa-4a11-b111-000000000079",
     "type": "expense",
     "amount": 130,
-    "category": "entertainment",
-    "description": "Streaming and subscriptions",
-    "date": "2026-01-13T21:00:00.000Z"
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2025-04-11T14:20:00.000Z"
   },
   {
-    "id": "c3f00309-cccc-4c33-b333-000000000029",
+    "id": "a1f01604-aaaa-4a11-b111-000000000080",
+    "type": "expense",
+    "amount": 95,
+    "category": "Health",
+    "description": "Pharmacy - vitamins",
+    "date": "2025-04-16T11:30:00.000Z"
+  },
+  {
+    "id": "a1f01605-aaaa-4a11-b111-000000000081",
+    "type": "expense",
+    "amount": 120,
+    "category": "Entertainment",
+    "description": "Museum and lunch",
+    "date": "2025-04-25T13:00:00.000Z"
+  },
+  {
+    "id": "a1f01701-aaaa-4a11-b111-000000000082",
     "type": "income",
-    "amount": 160,
-    "category": "other",
-    "description": "Small business profit",
-    "date": "2026-01-14T08:30:00.000Z"
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-05-05T08:00:00.000Z"
   },
   {
-    "id": "c3f00310-cccc-4c33-b333-000000000030",
+    "id": "a1f01702-aaaa-4a11-b111-000000000083",
     "type": "expense",
-    "amount": 85,
-    "category": "health",
-    "description": "Medical supplies purchase",
-    "date": "2026-01-14T19:00:00.000Z"
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-05-10T10:30:00.000Z"
   },
   {
-    "id": "c3f00310-cccc-4c33-b333-000000000030",
+    "id": "a1f01703-aaaa-4a11-b111-000000000084",
+    "type": "expense",
+    "amount": 105,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2025-05-09T15:45:00.000Z"
+  },
+  {
+    "id": "a1f01704-aaaa-4a11-b111-000000000085",
+    "type": "income",
+    "amount": 220,
+    "category": "Other",
+    "description": "Consulting work",
+    "date": "2025-05-15T11:00:00.000Z"
+  },
+  {
+    "id": "a1f01705-aaaa-4a11-b111-000000000086",
+    "type": "expense",
+    "amount": 75,
+    "category": "Transport",
+    "description": "Uber rides",
+    "date": "2025-05-22T19:30:00.000Z"
+  },
+  {
+    "id": "a1f01801-aaaa-4a11-b111-000000000087",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-06-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01802-aaaa-4a11-b111-000000000088",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-06-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01803-aaaa-4a11-b111-000000000089",
+    "type": "expense",
+    "amount": 140,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2025-06-12T16:00:00.000Z"
+  },
+  {
+    "id": "a1f01804-aaaa-4a11-b111-000000000090",
+    "type": "expense",
+    "amount": 280,
+    "category": "Shopping",
+    "description": "New laptop accessories",
+    "date": "2025-06-18T13:30:00.000Z"
+  },
+  {
+    "id": "a1f01805-aaaa-4a11-b111-000000000091",
+    "type": "expense",
+    "amount": 100,
+    "category": "Entertainment",
+    "description": "Summer festival",
+    "date": "2025-06-28T18:00:00.000Z"
+  },
+  {
+    "id": "a1f01901-aaaa-4a11-b111-000000000092",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-07-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f01902-aaaa-4a11-b111-000000000093",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-07-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f01903-aaaa-4a11-b111-000000000094",
+    "type": "expense",
+    "amount": 120,
+    "category": "Food",
+    "description": "Supermarket",
+    "date": "2025-07-14T14:30:00.000Z"
+  },
+  {
+    "id": "a1f01904-aaaa-4a11-b111-000000000095",
+    "type": "expense",
+    "amount": 350,
+    "category": "Transport",
+    "description": "Vacation flight tickets",
+    "date": "2025-07-20T09:00:00.000Z"
+  },
+  {
+    "id": "a1f01905-aaaa-4a11-b111-000000000096",
+    "type": "income",
+    "amount": 400,
+    "category": "Other",
+    "description": "Mid-year bonus",
+    "date": "2025-07-25T10:00:00.000Z"
+  },
+  {
+    "id": "a1f02001-aaaa-4a11-b111-000000000097",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-08-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02002-aaaa-4a11-b111-000000000098",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-08-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02003-aaaa-4a11-b111-000000000099",
+    "type": "expense",
+    "amount": 135,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2025-08-08T15:20:00.000Z"
+  },
+  {
+    "id": "a1f02004-aaaa-4a11-b111-000000000100",
+    "type": "expense",
+    "amount": 450,
+    "category": "Entertainment",
+    "description": "Summer vacation expenses",
+    "date": "2025-08-15T12:00:00.000Z"
+  },
+  {
+    "id": "a1f02005-aaaa-4a11-b111-000000000101",
+    "type": "expense",
+    "amount": 110,
+    "category": "Health",
+    "description": "Medical checkup",
+    "date": "2025-08-22T10:00:00.000Z"
+  },
+  {
+    "id": "a1f02101-aaaa-4a11-b111-000000000102",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-09-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02102-aaaa-4a11-b111-000000000103",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-09-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02103-aaaa-4a11-b111-000000000104",
+    "type": "expense",
+    "amount": 115,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2025-09-12T16:45:00.000Z"
+  },
+  {
+    "id": "a1f02104-aaaa-4a11-b111-000000000105",
     "type": "expense",
     "amount": 85,
-    "category": "Sports",
-    "description": "buy ball",
-    "date": "2026-01-14T19:00:00.000Z"
+    "category": "Transport",
+    "description": "Car insurance",
+    "date": "2025-09-15T09:30:00.000Z"
+  },
+  {
+    "id": "a1f02105-aaaa-4a11-b111-000000000106",
+    "type": "expense",
+    "amount": 190,
+    "category": "Shopping",
+    "description": "Fall clothing",
+    "date": "2025-09-25T14:00:00.000Z"
+  },
+  {
+    "id": "a1f02201-aaaa-4a11-b111-000000000107",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-10-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02202-aaaa-4a11-b111-000000000108",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-10-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02203-aaaa-4a11-b111-000000000109",
+    "type": "expense",
+    "amount": 125,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2025-10-13T14:15:00.000Z"
+  },
+  {
+    "id": "a1f02204-aaaa-4a11-b111-000000000110",
+    "type": "income",
+    "amount": 175,
+    "category": "Other",
+    "description": "Freelance project",
+    "date": "2025-10-20T11:30:00.000Z"
+  },
+  {
+    "id": "a1f02205-aaaa-4a11-b111-000000000111",
+    "type": "expense",
+    "amount": 70,
+    "category": "Entertainment",
+    "description": "Movie night and snacks",
+    "date": "2025-10-26T19:00:00.000Z"
+  },
+  {
+    "id": "a1f02301-aaaa-4a11-b111-000000000112",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-11-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02302-aaaa-4a11-b111-000000000113",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-11-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02303-aaaa-4a11-b111-000000000114",
+    "type": "expense",
+    "amount": 150,
+    "category": "Food",
+    "description": "Thanksgiving groceries",
+    "date": "2025-11-20T17:00:00.000Z"
+  },
+  {
+    "id": "a1f02304-aaaa-4a11-b111-000000000115",
+    "type": "expense",
+    "amount": 320,
+    "category": "Shopping",
+    "description": "Black Friday deals",
+    "date": "2025-11-28T10:00:00.000Z"
+  },
+  {
+    "id": "a1f02305-aaaa-4a11-b111-000000000116",
+    "type": "expense",
+    "amount": 60,
+    "category": "Health",
+    "description": "Pharmacy - cold medicine",
+    "date": "2025-11-15T12:30:00.000Z"
+  },
+  {
+    "id": "a1f02401-aaaa-4a11-b111-000000000117",
+    "type": "income",
+    "amount": 3600,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2025-12-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02402-aaaa-4a11-b111-000000000118",
+    "type": "income",
+    "amount": 600,
+    "category": "Other",
+    "description": "Year-end bonus",
+    "date": "2025-12-20T10:00:00.000Z"
+  },
+  {
+    "id": "a1f02403-aaaa-4a11-b111-000000000119",
+    "type": "expense",
+    "amount": 850,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2025-12-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02404-aaaa-4a11-b111-000000000120",
+    "type": "expense",
+    "amount": 170,
+    "category": "Food",
+    "description": "Holiday groceries",
+    "date": "2025-12-18T16:30:00.000Z"
+  },
+  {
+    "id": "a1f02405-aaaa-4a11-b111-000000000121",
+    "type": "expense",
+    "amount": 500,
+    "category": "Shopping",
+    "description": "Christmas gifts",
+    "date": "2025-12-23T13:00:00.000Z"
+  },
+  {
+    "id": "a1f02406-aaaa-4a11-b111-000000000122",
+    "type": "expense",
+    "amount": 200,
+    "category": "Entertainment",
+    "description": "New Year's Eve party",
+    "date": "2025-12-31T23:00:00.000Z"
+  },
+  {
+    "id": "a1f02501-aaaa-4a11-b111-000000000123",
+    "type": "income",
+    "amount": 3700,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2026-01-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02502-aaaa-4a11-b111-000000000124",
+    "type": "expense",
+    "amount": 900,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2026-01-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02503-aaaa-4a11-b111-000000000125",
+    "type": "expense",
+    "amount": 120,
+    "category": "Food",
+    "description": "Grocery shopping",
+    "date": "2026-01-12T15:00:00.000Z"
+  },
+  {
+    "id": "a1f02504-aaaa-4a11-b111-000000000126",
+    "type": "expense",
+    "amount": 180,
+    "category": "Health",
+    "description": "Annual health insurance",
+    "date": "2026-01-08T09:00:00.000Z"
+  },
+  {
+    "id": "a1f02505-aaaa-4a11-b111-000000000127",
+    "type": "expense",
+    "amount": 75,
+    "category": "Transport",
+    "description": "Monthly transit pass",
+    "date": "2026-01-15T08:30:00.000Z"
+  },
+  {
+    "id": "a1f02601-aaaa-4a11-b111-000000000128",
+    "type": "income",
+    "amount": 3700,
+    "category": "Salary",
+    "description": "Monthly salary payment",
+    "date": "2026-02-05T08:00:00.000Z"
+  },
+  {
+    "id": "a1f02602-aaaa-4a11-b111-000000000129",
+    "type": "expense",
+    "amount": 900,
+    "category": "Utilities",
+    "description": "Rent payment",
+    "date": "2026-02-10T10:30:00.000Z"
+  },
+  {
+    "id": "a1f02603-aaaa-4a11-b111-000000000130",
+    "type": "expense",
+    "amount": 130,
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-02-08T14:45:00.000Z"
+  },
+  {
+    "id": "a1f02604-aaaa-4a11-b111-000000000131",
+    "type": "income",
+    "amount": 250,
+    "category": "Other",
+    "description": "Freelance consulting",
+    "date": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "id": "a1f02605-aaaa-4a11-b111-000000000132",
+    "type": "expense",
+    "amount": 95,
+    "category": "Entertainment",
+    "description": "Concert tickets",
+    "date": "2026-02-20T18:30:00.000Z"
   }
-  
 ]

@@ -12,7 +12,7 @@ Content-Type: application/json
     "description": "comprar medicina"
 }
 
-### Filtar transaction &category=other&month=11&year=2024
+### Filtrar transaction &category=other&month=11&year=2024
 GET http://localhost:3000/api/transactions?month=12&year=2025
 
 ### Obtener transaction por id
@@ -40,7 +40,7 @@ GET http://localhost:3000/api/stats/balance?year=2024&month=12
 GET http://localhost:3000/api/stats/by-category
 
 ### Filtrar Gastos por categoria por mes y año
-GET http://localhost:3000/api/stats/by-category?month=11&year=2024
+GET http://localhost:3000/api/stats/by-category?month=1&year=2026
 
 ### Resumen mensual
 GET http://localhost:3000/api/stats/monthly
