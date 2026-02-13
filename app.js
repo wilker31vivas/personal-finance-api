@@ -2,7 +2,7 @@ import expresss from "express";
 const app = expresss();
 import { routerTransaction } from "./routes/transaction.js";
 import { routerStats } from "./routes/stats.js";
-import cors from 'cors'
+import cors from "cors";
 import { categoriesRouter } from "./routes/categories.js";
 
 app.use(expresss.json());
@@ -17,8 +17,8 @@ app.use(cors({
 
 
 app.use("/api/transactions", routerTransaction);
-app.use('/api/stats', routerStats)
-app.use('/api/categories', categoriesRouter)
+app.use("/api/stats", routerStats);
+app.use("/api/categories", categoriesRouter);
 
 const PORT = process.env.PORT ?? 3000;
 
