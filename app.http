@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Filtrar transaction &category=other&month=11&year=2024
-GET http://localhost:3000/api/transactions?month=12&year=2025
+GET http://localhost:3000/api/transactions?category=other
 
 ### Obtener transaction por id
 GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1

@@ -1,4 +1,4 @@
-import { getTransactions } from "../utils.js";
+import { getTransactions, capitalizeFirstLetter } from "../utils.js";
 const transaction = getTransactions();
 
 export class TransactionModel {
@@ -15,7 +15,7 @@ export class TransactionModel {
     if (category) {
       const categoryNormalized = category.toLowerCase();
       filterTransaction = filterTransaction.filter(
-        (t) => t.category === categoryNormalized,
+        (t) => t.category.toLowerCase() === categoryNormalized,
       );
     }
 
@@ -61,6 +61,7 @@ export class TransactionModel {
     const newTransaction = {
       id: crypto.randomUUID(),
       ...input,
+      category: capitalizeFirstLetter(input.category),
       date: new Date(),
     };
 

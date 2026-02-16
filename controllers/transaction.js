@@ -7,7 +7,7 @@ import {
 export class TransactionController {
   static async getAll(req, res) {
     const { type, category, month, year } = req.query;
-    const response = await TransactionModel.getAll({type: type, category: category, month: month, year: year});
+    const response = await TransactionModel.getAll({type, category, month, year});
     return res.status(200).json(response);
   }
 
