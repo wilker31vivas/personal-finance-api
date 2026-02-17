@@ -1,3 +1,4 @@
+import { date } from "zod";
 import { getTransactions, capitalizeFirstLetter } from "../utils.js";
 const transaction = getTransactions();
 
@@ -35,7 +36,9 @@ export class TransactionModel {
       });
     }
 
-    return filterTransaction;
+    return filterTransaction.sort(
+      (a, b) => new Date(b.date) - new Date(a.date),
+    );
   }
 
   static async getById({ id }) {
@@ -60,9 +63,11 @@ export class TransactionModel {
   static async create(input) {
     const newTransaction = {
       id: crypto.randomUUID(),
-      ...input,
       category: capitalizeFirstLetter(input.category),
-      date: new Date(),
+      amount: input.amount,
+      date: input.date || new Date().toISOString().split('T')[0],
+      description: input.description,
+      type: input.type,
     };
 
     transaction.push(newTransaction);
