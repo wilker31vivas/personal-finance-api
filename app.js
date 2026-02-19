@@ -14,7 +14,7 @@ app.use(
     origin: process.env.CORS_ORIGIN.includes(",") 
       ? process.env.CORS_ORIGIN.split(",")
       : process.env.CORS_ORIGIN,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   }),
 );

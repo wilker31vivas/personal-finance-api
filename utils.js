@@ -6,7 +6,7 @@ const transaction = require("./transaction.json");
 const categories = require("./categories.json");
 
 export function getCategoryNames() {
-  return categories.map((item) => item.name.toLowerCase());
+  return categories.map((item) => item.name);
 }
 
 export function getCategories() {

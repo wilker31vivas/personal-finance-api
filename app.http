@@ -8,7 +8,7 @@ Content-Type: application/json
 {
     "type": "expense",
     "amount": 12,
-    "category": "health",
+    "category": "Health",
     "description": "comprar medicina"
 }
 
@@ -19,12 +19,11 @@ GET http://localhost:3000/api/transactions?category=other
 GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
 
 ### Actualizar una transaction
-PATCH http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+PATCH http://localhost:3000/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
 Content-Type: application/json
 
 {
-    "amount": 12,
-    "id": "wilker"
+    "amount" : 251
 }
 
 ### Eliminar una transaction

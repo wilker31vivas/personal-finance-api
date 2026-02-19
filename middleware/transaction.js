@@ -1,4 +1,3 @@
-import { number } from "zod";
 import {
   getCategoryNames,
   transactionType,
@@ -26,8 +25,9 @@ export function validateCategory(req, res, next) {
 
   if (category) {
     const categoryNormalized = category.toLowerCase();
+    const categoryNamesNormalized = categoryNames.map((item) => item.toLowerCase())
 
-    if (!categoryNames.includes(categoryNormalized)) {
+    if (!categoryNamesNormalized.includes(categoryNormalized)) {
       return res.status(404).json({ message: "Category not found" });
     }
   }
