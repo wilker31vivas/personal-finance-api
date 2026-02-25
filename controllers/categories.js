@@ -29,10 +29,10 @@ export class CategoriesController {
         .json({ message: JSON.parse(response.error.message) });
     }
 
-    const categoryNormalized = response.data.name.toLowerCase();
-    const existingCategories = getCategoryNames();
+    const categoryNormalized = response.data.name.trim().toLowerCase();
+    const existingCategories = getCategoryNames().map((item) => item.toLowerCase()).some((item)=> item === categoryNormalized);
 
-    if (existingCategories.includes(categoryNormalized)) {
+    if (existingCategories) {
       return res.status(409).json({ message: "The category already exists" });
     }
 
