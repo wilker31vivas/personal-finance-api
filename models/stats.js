@@ -1,4 +1,4 @@
-import { TransactionModel } from "./transaction.js";
+import { TransactionsModel } from "./transaction.js";
 import {
   calculateBalance,
   splitType,
@@ -7,7 +7,7 @@ import {
 
 export class StatsModel {
   static async getBalance({ month, year }) {
-    const transactions = await TransactionModel.getAll({
+    const transactions = await TransactionsModel.getAll({
       month,
       year,
     });
@@ -22,7 +22,7 @@ export class StatsModel {
   }
 
   static async getByCategory({ month, year }) {
-    const transactions = await TransactionModel.getAll({
+    const transactions = await TransactionsModel.getAll({
       type: "expense",
       category: null,
       month: month,
@@ -61,25 +61,25 @@ export class StatsModel {
         transactionsExpensePrevious,
         transactionsIncomePrevious,
       ] = await Promise.all([
-        TransactionModel.getAll({
+        TransactionsModel.getAll({
           type: "expense",
           category: null,
           month: currentMonth,
           year: currentYear,
         }),
-        TransactionModel.getAll({
+        TransactionsModel.getAll({
           type: "income",
           category: null,
           month: currentMonth,
           year: currentYear,
         }),
-        TransactionModel.getAll({
+        TransactionsModel.getAll({
           type: "expense",
           category: null,
           month: previousMonth,
           year: previousYear,
         }),
-        TransactionModel.getAll({
+        TransactionsModel.getAll({
           type: "income",
           category: null,
           month: previousMonth,
@@ -131,8 +131,8 @@ export class StatsModel {
     };
 
     const [expenses, incomes] = await Promise.all([
-      TransactionModel.getAll({ type: "expense", ...filters }),
-      TransactionModel.getAll({ type: "income", ...filters }),
+      TransactionsModel.getAll({ type: "expense", ...filters }),
+      TransactionsModel.getAll({ type: "income", ...filters }),
     ]);
 
     const current = calculateBalance(expenses, incomes);
@@ -147,7 +147,7 @@ export class StatsModel {
   }
 
   static async getTopCategories({ month, year }) {
-    const transactions = await TransactionModel.getAll({
+    const transactions = await TransactionsModel.getAll({
       type: "expense",
       month,
       year,

@@ -1,6 +1,7 @@
-import { getCategories, getTransactions, capitalizeFirstLetter } from "../utils.js";
+import { getCategories } from "../utils.js";
 const categories = getCategories();
-const transaction = getTransactions();
+import { TransactionsModel } from "../models/transaction.js";
+import { capitalizeFirstLetter } from "../utils.js";
 
 
 export class CategoriesModel {
@@ -14,12 +15,14 @@ export class CategoriesModel {
 
   static async create(input) {
     const newCategory = {
-      id:
-        categories.length > 0
-          ? (Math.max(...categories.map((c) => c.id)) + 1).toString()
-          : 1,
+      id: crypto.randomUUID(),
       name: capitalizeFirstLetter(input.name),
     };
+
+    const exists = categories.some(
+      (c) => c.name.toLowerCase() === input.name.trim().toLowerCase(),
+    );
+    if (exists) return null;
 
     categories.push(newCategory);
 
@@ -28,8 +31,9 @@ export class CategoriesModel {
 
   static async update(id, input) {
     const categoryIndex = categories.findIndex((c) => c.id === id);
-
     if (categoryIndex === -1) return false;
+
+    const oldCategoryName = categories[categoryIndex].name;
 
     const partialCategory = {
       ...categories[categoryIndex],
@@ -38,18 +42,26 @@ export class CategoriesModel {
 
     categories[categoryIndex] = partialCategory;
 
+    if (oldCategoryName !== input.name) {
+      await TransactionsModel.updateCategory(oldCategoryName, input.name);
+    }
+
     return partialCategory;
   }
 
   static async delete(id) {
     const categoryIndex = categories.findIndex((c) => c.id === id);
-    if (categoryIndex === -1) return {isExists: false, isUsed: false};
-    
-    const isUsed = transaction.some((t) => t.category.toLowerCase() === categories[categoryIndex].name.toLowerCase())
-    if (isUsed) return {isExists: true, isUsed: true};
+    if (categoryIndex === -1) return { isExists: false, isUsed: false };
+
+    const isUsed = transaction.some(
+      (t) =>
+        t.category.toLowerCase() ===
+        categories[categoryIndex].name.toLowerCase(),
+    );
+    if (isUsed) return { isExists: true, isUsed: true };
 
     categories.splice(categoryIndex, 1);
 
-    return {isExists: true, isUsed: false };
+    return { isExists: true, isUsed: false };
   }
 }

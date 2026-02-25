@@ -1,10 +1,9 @@
-import { date } from "zod";
 import { getTransactions, capitalizeFirstLetter } from "../utils.js";
-const transaction = getTransactions();
+const transactions = getTransactions();
 
-export class TransactionModel {
+export class TransactionsModel {
   static async getAll({ type, category, month, year }) {
-    let filterTransaction = transaction;
+    let filterTransaction = transactions;
 
     if (type) {
       const typeNormalized = type.toLowerCase();
@@ -42,20 +41,20 @@ export class TransactionModel {
   }
 
   static async getById({ id }) {
-    return transaction.find((t) => t.id === id);
+    return transactions.find((t) => t.id === id);
   }
 
   static async update(id, input) {
-    const transactionIndex = transaction.findIndex((t) => t.id === id);
+    const transactionIndex = transactions.findIndex((t) => t.id === id);
 
     if (transactionIndex === -1) return false;
 
     const partialTransaction = {
-      ...transaction[transactionIndex],
+      ...transactions[transactionIndex],
       ...input,
     };
 
-    transaction[transactionIndex] = partialTransaction;
+    transactions[transactionIndex] = partialTransaction;
 
     return partialTransaction;
   }
@@ -65,22 +64,31 @@ export class TransactionModel {
       id: crypto.randomUUID(),
       category: capitalizeFirstLetter(input.category),
       amount: input.amount,
-      date: input.date || new Date().toISOString().split('T')[0],
+      date: input.date || new Date().toISOString().split("T")[0],
       description: input.description,
       type: input.type,
     };
 
-    transaction.push(newTransaction);
+    transactions.push(newTransaction);
 
     return newTransaction;
   }
 
+  static async updateCategory(oldCategory, newCategory) {
+    const updatedTransactions = transactions.map((t) =>
+      t.category === oldCategory ? { ...t, category: newCategory } : t,
+    );
+
+    transactions.splice(0, transactions.length, ...updatedTransactions);
+    return updatedTransactions.filter((t) => t.category === newCategory).length;
+  }
+
   static async delete({ id }) {
-    const transactionIndex = transaction.findIndex((t) => t.id === id);
+    const transactionIndex = transactions.findIndex((t) => t.id === id);
 
     if (transactionIndex === -1) return false;
 
-    transaction.splice(transactionIndex, 1);
+    transactions.splice(transactionIndex, 1);
 
     return true;
   }

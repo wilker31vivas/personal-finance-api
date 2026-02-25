@@ -1,13 +1,8 @@
 export const transactionType = ["expense", "income"];
-
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const transaction = require("./transaction.json");
 const categories = require("./categories.json");
-
-export function getCategoryNames() {
-  return categories.map((item) => item.name);
-}
 
 export function getCategories() {
   return categories;

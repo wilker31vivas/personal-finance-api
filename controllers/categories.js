@@ -1,6 +1,5 @@
 import { CategoriesModel } from "../models/categories.js";
 import { validateCategory } from "../schemas/categories.js";
-import { getCategoryNames } from "../utils.js";
 
 export class CategoriesController {
   static async getAll(req, res) {
@@ -29,15 +28,9 @@ export class CategoriesController {
         .json({ message: JSON.parse(response.error.message) });
     }
 
-    const categoryNormalized = response.data.name.trim().toLowerCase();
-    const existingCategories = getCategoryNames().map((item) => item.toLowerCase()).some((item)=> item === categoryNormalized);
-
-    if (existingCategories) {
-      return res.status(409).json({ message: "The category already exists" });
-    }
-
     const newCategory = await CategoriesModel.create(response.data);
-    return res.status(201).json(newCategory);
+    if (!newCategory) return res.status(409).json({ message: "The category already exists" });
+    return res.status(201).json({id: newCategory.id, name: newCategory.name});
   }
 
   static async update(req, res) {
@@ -45,9 +38,7 @@ export class CategoriesController {
     const response = validateCategory(req.body);
 
     if (response.error) {
-      return res
-        .status(400)
-        .json({ message: JSON.parse(response.error.message) });
+      return res.status(400).json({ message: JSON.parse(response.error.message) });
     }
 
     const updateCategory = await CategoriesModel.update(id, response.data);

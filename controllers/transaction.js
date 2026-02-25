@@ -1,4 +1,4 @@
-import { TransactionModel } from "../models/transaction.js";
+import { TransactionsModel } from "../models/transaction.js";
 import {
   validateTransactionPartial,
   validateTransaction,
@@ -7,14 +7,14 @@ import {
 export class TransactionController {
   static async getAll(req, res) {
     const { type, category, month, year } = req.query;
-    const response = await TransactionModel.getAll({type, category, month, year});
+    const response = await TransactionsModel.getAll({type, category, month, year});
     return res.status(200).json(response);
   }
 
   static async getById(req, res) {
     const { id } = req.params;
 
-    const transactionById = await TransactionModel.getById({ id });
+    const transactionById = await TransactionsModel.getById({ id });
 
     if (!transactionById) {
       return res.status(404).json({ error: "Transaction not found" });
@@ -33,7 +33,7 @@ export class TransactionController {
         .json({ message: JSON.parse(response.error.message) });
     }
 
-    const updateTransaction = await TransactionModel.update(id, response.data);
+    const updateTransaction = await TransactionsModel.update(id, response.data);
 
     if (!updateTransaction) {
       return res.status(404).json({ message: "transaction not found" });
@@ -48,14 +48,14 @@ export class TransactionController {
       return res.status(400).json({ message: JSON.parse(response.error.message) });
     }
 
-    const createTransaction = await TransactionModel.create(response.data);
+    const createTransaction = await TransactionsModel.create(response.data);
 
     return res.status(201).json(createTransaction);
   }
 
   static async delete(req, res) {
     const { id } = req.params;
-    const deleteTransaction = await TransactionModel.delete({ id });
+    const deleteTransaction = await TransactionsModel.delete({ id });
     if (!deleteTransaction) {
       return res.status(404).json({ message: "Transaction not found" });
     }
@@ -64,7 +64,7 @@ export class TransactionController {
   }
 
   static async getYears(req, res){
-    const transactions = await TransactionModel.getAll({});
+    const transactions = await TransactionsModel.getAll({});
     const response = [...new Set(
     transactions.map(t => new Date(t.date).getFullYear())
   )].sort((a, b) => b - a)

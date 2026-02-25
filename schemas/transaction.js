@@ -1,6 +1,6 @@
 import z from 'zod'
-import {getCategoryNames, transactionType} from '../utils.js'
-const categoryNames = getCategoryNames()
+import { getCategories, transactionType} from '../utils.js'
+const categoryNames = getCategories().map((item) => item.name)
 
 const TransactionSchemas = z.object({
     type: z.literal(transactionType),

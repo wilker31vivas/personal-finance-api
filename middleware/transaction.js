@@ -1,10 +1,10 @@
 import {
-  getCategoryNames,
+  getCategories,
   transactionType,
   getTransactions,
 } from "../utils.js";
 const transaction = getTransactions();
-const categoryNames = getCategoryNames()
+const categoryNames = getCategories().map((item) => item.name)
 
 
 export function validateType(req, res, next) {
