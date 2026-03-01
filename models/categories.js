@@ -2,7 +2,8 @@ import { getCategories } from "../utils.js";
 const categories = getCategories();
 import { TransactionsModel } from "../models/transaction.js";
 import { capitalizeFirstLetter } from "../utils.js";
-
+import { getTransactions } from "../utils.js";
+const transactions = getTransactions();
 
 export class CategoriesModel {
   static async getAll() {
@@ -53,7 +54,7 @@ export class CategoriesModel {
     const categoryIndex = categories.findIndex((c) => c.id === id);
     if (categoryIndex === -1) return { isExists: false, isUsed: false };
 
-    const isUsed = transaction.some(
+    const isUsed = transactions.some(
       (t) =>
         t.category.toLowerCase() ===
         categories[categoryIndex].name.toLowerCase(),
