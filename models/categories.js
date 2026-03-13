@@ -1,8 +1,6 @@
-import { getCategories } from "../utils.js";
+import { getCategories, getTransactions } from "../utils.js";
 const categories = getCategories();
 import { TransactionsModel } from "../models/transaction.js";
-import { capitalizeFirstLetter } from "../utils.js";
-import { getTransactions } from "../utils.js";
 const transactions = getTransactions();
 
 export class CategoriesModel {
@@ -17,7 +15,7 @@ export class CategoriesModel {
   static async create(input) {
     const newCategory = {
       id: crypto.randomUUID(),
-      name: capitalizeFirstLetter(input.name),
+      name: input.name.toLowerCase(),
     };
 
     const exists = categories.some(
@@ -38,7 +36,7 @@ export class CategoriesModel {
 
     const partialCategory = {
       ...categories[categoryIndex],
-      ...input,
+      name: input.name.toLowerCase(),
     };
 
     categories[categoryIndex] = partialCategory;

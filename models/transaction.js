@@ -1,4 +1,4 @@
-import { getTransactions, capitalizeFirstLetter } from "../utils.js";
+import { getTransactions } from "../utils.js";
 const transactions = getTransactions();
 
 export class TransactionsModel {
@@ -62,7 +62,7 @@ export class TransactionsModel {
   static async create(input) {
     const newTransaction = {
       id: crypto.randomUUID(),
-      category: capitalizeFirstLetter(input.category),
+      category: input.category.toLowerCase(),
       amount: input.amount,
       date: input.date || new Date().toISOString().split("T")[0],
       description: input.description,

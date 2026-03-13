@@ -29,8 +29,11 @@ export class CategoriesController {
     }
 
     const newCategory = await CategoriesModel.create(response.data);
-    if (!newCategory) return res.status(409).json({ message: "The category already exists" });
-    return res.status(201).json({id: newCategory.id, name: newCategory.name});
+    if (!newCategory)
+      return res.status(409).json({ error: "The category already exists" });
+    return res
+      .status(201)
+      .json({ data: { id: newCategory.id, name: newCategory.name } });
   }
 
   static async update(req, res) {
@@ -38,13 +41,15 @@ export class CategoriesController {
     const response = validateCategory(req.body);
 
     if (response.error) {
-      return res.status(400).json({ message: JSON.parse(response.error.message) });
+      return res
+        .status(400)
+        .json({ error: JSON.parse(response.error.message) });
     }
 
     const updateCategory = await CategoriesModel.update(id, response.data);
 
     if (!updateCategory) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ error: "Category not found" });
     }
 
     return res.status(200).json(updateCategory);
@@ -55,12 +60,12 @@ export class CategoriesController {
     const result = await CategoriesModel.delete(id);
 
     if (!result.isExists) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ error: "Category not found" });
     }
 
     if (result.isUsed) {
       return res.status(409).json({
-        message:
+        error:
           "Cannot delete category. It is currently in use by existing transactions",
       });
     }

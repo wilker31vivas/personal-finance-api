@@ -14,7 +14,7 @@ export function validateType(req, res, next) {
     const typeNormalized = type.toLowerCase();
 
     if (!transactionType.includes(typeNormalized)) {
-      return res.status(404).json({ message: "Type not found" });
+      return res.status(404).json({ error: "Type not found" });
     }
   }
   next();
@@ -28,7 +28,7 @@ export function validateCategory(req, res, next) {
     const categoryNamesNormalized = categoryNames.map((item) => item.toLowerCase())
 
     if (!categoryNamesNormalized.includes(categoryNormalized)) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ error: "Category not found" });
     }
   }
   next();
@@ -41,11 +41,11 @@ export function vaildateMonth(req, res, next) {
     const monthNormalized = Number(month);
 
     if (isNaN(monthNormalized)) {
-      return res.status(400).json({ message: "The month must be a number" });
+      return res.status(400).json({ error: "The month must be a number" });
     }
 
     if (monthNormalized > 12 || monthNormalized < 1) {
-      return res.status(404).json({ message: "Invalid month. Range: 1–12" });
+      return res.status(404).json({ error: "Invalid month. Range: 1–12" });
     }
   }
   next();
@@ -58,7 +58,7 @@ export function validateYear(req, res, next) {
     const yearNormalized = Number(year);
 
     if (isNaN(yearNormalized)) {
-      return res.status(400).json({ message: "The year must be a number" });
+      return res.status(400).json({ error: "The year must be a number" });
     }
 
     const years = transaction.map((item) => {
@@ -73,7 +73,7 @@ export function validateYear(req, res, next) {
       return res
         .status(400)
         .json({
-          message: `Invalid year. Available range: ${yearMin}–${yearMax}`
+          error: `Invalid year. Available range: ${yearMin}–${yearMax}`
         });
     }
   }

@@ -1,34 +1,34 @@
 [
     {
         "id": "1",
-        "name": "Food"
+        "name": "food"
     },
     {
         "id": "2",
-        "name": "Transport"
+        "name": "transport"
     },
     {
         "id": "3",
-        "name": "Entertainment"
+        "name": "entertainment"
     },
     {
         "id": "4",
-        "name": "Utilities"
+        "name": "utilities"
     },
     {
         "id": "5",
-        "name": "Health"
+        "name": "health"
     },
     {
         "id": "6",
-        "name": "Shopping"
+        "name": "shopping"
     },
     {
         "id": "7",
-        "name": "Salary"
+        "name": "salary"
     },
     {
         "id": "8",
-        "name": "Other"
+        "name": "other"
     }
 ]

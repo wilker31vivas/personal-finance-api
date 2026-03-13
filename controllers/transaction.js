@@ -30,22 +30,24 @@ export class TransactionController {
     if (response.error) {
       return res
         .status(400)
-        .json({ message: JSON.parse(response.error.message) });
+        .json({ error: JSON.parse(response.error.message) });
     }
 
     const updateTransaction = await TransactionsModel.update(id, response.data);
 
     if (!updateTransaction) {
-      return res.status(404).json({ message: "transaction not found" });
+      return res.status(404).json({ error: "Transaction not found" });
     }
 
     return res.status(200).json(updateTransaction);
   }
 
   static async create(req, res) {
+    req.body.category = req.body.category.toLowerCase()
+    req.body.type = req.body.type.toLowerCase()
     const response = validateTransaction(req.body);
     if (response.error) {
-      return res.status(400).json({ message: JSON.parse(response.error.message) });
+      return res.status(400).json({ error: JSON.parse(response.error.message) });
     }
 
     const createTransaction = await TransactionsModel.create(response.data);
@@ -57,10 +59,10 @@ export class TransactionController {
     const { id } = req.params;
     const deleteTransaction = await TransactionsModel.delete({ id });
     if (!deleteTransaction) {
-      return res.status(404).json({ message: "Transaction not found" });
+      return res.status(404).json({ error: "Transaction not found" });
     }
 
-    res.status(200).json({ message: "Transaction deleted done" });
+    res.status(200).json({ error: "Transaction deleted done" });
   }
 
   static async getYears(req, res){
