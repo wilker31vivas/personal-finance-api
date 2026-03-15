@@ -1,7 +1,7 @@
-### Obtener todas las transaction
+### Obter todas as transações
 GET http://localhost:3000/api/transactions
 
-### Crear transaction
+### Criar transação
 POST http://localhost:3000/api/transactions
 Content-Type: application/json
 
@@ -13,13 +13,13 @@ Content-Type: application/json
     "date": "26-02-2026"
 }
 
-### Filtrar transaction &category=other&month=11&year=2024
+### Filtrar transações &category=other&month=11&year=2024
 GET http://localhost:3000/api/transactions?category=other
 
-### Obtener transaction por id
+### Obter transação por ID
 GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
 
-### Actualizar una transaction
+### Atualizar uma transação
 PATCH http://localhost:3000/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
 Content-Type: application/json
 
@@ -27,40 +27,40 @@ Content-Type: application/json
     "amount" : 251
 }
 
-### Eliminar una transaction
+### Excluir uma transação
 DELETE http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
 
-### Ver el balance
+### Ver o saldo
 GET http://localhost:3000/api/stats/balance
 
-### Filtrar el balance
+### Filtrar saldo
 GET http://localhost:3000/api/stats/balance?year=2024&month=12
 
 ### Gastos por categoria
 GET http://localhost:3000/api/stats/by-category
 
-### Filtrar Gastos por categoria por mes y año
+### Filtrar gastos por categoria por mês e ano
 GET http://localhost:3000/api/stats/by-category?month=1&year=2026
 
-### Resumen mensual
+### Resumo mensal
 GET http://localhost:3000/api/stats/monthly
 
-### Filtrar resumen mensual por mes y año
+### Filtrar resumo mensal por mês e ano
 GET http://localhost:3000/api/stats/monthly?month=12&year=2025
 
-### Top Categories
+### Principais categorias
 GET http://localhost:3000/api/stats/top-categories
 
-###Top categorias por filtro 
+### Filtrar principais categorias
 GET http://localhost:3000/api/stats/top-categories?month=12&year=2024
 
 ### Ver categorias
 GET http://localhost:3000/api/categories
 
-### Ver categoria por id
+### Ver categoria por ID
 GET http://localhost:3000/api/categories/1
 
-### Crear categoria
+### Criar categoria
 POST http://localhost:3000/api/categories
 Content-Type: application/json
 
@@ -68,7 +68,7 @@ Content-Type: application/json
     "name": "regalos"
 }
 
-### Actualizar categoria
+### Atualizar categoria
 PUT http://localhost:3000/api/categories/1
 Content-Type: application/json
 
@@ -76,5 +76,5 @@ Content-Type: application/json
     "name": "Comida"
 }
 
-### Eliminar una categoria
+### Excluir uma categoria
 DELETE http://localhost:3000/api/categories/1

@@ -64,7 +64,7 @@ export function getTopCategoriesByExpense(transactions) {
   const categories = Object.entries(transactionByCategory).map(
     ([name, data]) => {
       return {
-        name: capitalizeFirstLetter(name),
+        name: name.toLocaleLowerCase(),
         value: data.total,
       };
     },
