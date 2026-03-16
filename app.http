@@ -1,8 +1,10 @@
+@baseUrl = http://localhost:3000
+
 ### Obter todas as transações
-GET http://localhost:3000/api/transactions
+GET {{baseUrl}}/api/transactions
 
 ### Criar transação
-POST http://localhost:3000/api/transactions
+POST {{baseUrl}}/api/transactions
 Content-Type: application/json
 
 {
@@ -14,13 +16,13 @@ Content-Type: application/json
 }
 
 ### Filtrar transações &category=other&month=11&year=2024
-GET http://localhost:3000/api/transactions?category=other
+GET {{baseUrl}}/api/transactions?category=other
 
 ### Obter transação por ID
-GET http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+GET {{baseUrl}}/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
 
 ### Atualizar uma transação
-PATCH http://localhost:3000/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
+PATCH {{baseUrl}}/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
 Content-Type: application/json
 
 {
@@ -28,40 +30,40 @@ Content-Type: application/json
 }
 
 ### Excluir uma transação
-DELETE http://localhost:3000/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+DELETE {{baseUrl}}/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
 
 ### Ver o saldo
-GET http://localhost:3000/api/stats/balance
+GET {{baseUrl}}/api/stats/balance
 
 ### Filtrar saldo
-GET http://localhost:3000/api/stats/balance?year=2024&month=12
+GET {{baseUrl}}/api/stats/balance?year=2024&month=12
 
 ### Gastos por categoria
-GET http://localhost:3000/api/stats/by-category
+GET {{baseUrl}}/api/stats/by-category
 
 ### Filtrar gastos por categoria por mês e ano
-GET http://localhost:3000/api/stats/by-category?month=1&year=2026
+GET {{baseUrl}}/api/stats/by-category?month=1&year=2026
 
 ### Resumo mensal
-GET http://localhost:3000/api/stats/monthly
+GET {{baseUrl}}/api/stats/monthly
 
 ### Filtrar resumo mensal por mês e ano
-GET http://localhost:3000/api/stats/monthly?month=12&year=2025
+GET {{baseUrl}}/api/stats/monthly?month=12&year=2025
 
 ### Principais categorias
-GET http://localhost:3000/api/stats/top-categories
+GET {{baseUrl}}/api/stats/top-categories
 
 ### Filtrar principais categorias
-GET http://localhost:3000/api/stats/top-categories?month=12&year=2024
+GET {{baseUrl}}/api/stats/top-categories?month=12&year=2024
 
 ### Ver categorias
-GET http://localhost:3000/api/categories
+GET {{baseUrl}}/api/categories
 
 ### Ver categoria por ID
-GET http://localhost:3000/api/categories/1
+GET {{baseUrl}}/api/categories/1
 
 ### Criar categoria
-POST http://localhost:3000/api/categories
+POST {{baseUrl}}/api/categories
 Content-Type: application/json
 
 {
@@ -69,7 +71,7 @@ Content-Type: application/json
 }
 
 ### Atualizar categoria
-PUT http://localhost:3000/api/categories/1
+PUT {{baseUrl}}/api/categories/1
 Content-Type: application/json
 
 {
@@ -77,4 +79,4 @@ Content-Type: application/json
 }
 
 ### Excluir uma categoria
-DELETE http://localhost:3000/api/categories/1
+DELETE {{baseUrl}}/api/categories/1
