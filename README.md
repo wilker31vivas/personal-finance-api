@@ -219,7 +219,7 @@ http://localhost:3000/api/transactions
 
 This backend is consumed by a React + TypeScript application.
 
-👉 [**View frontend repository →**](https://github.com/wilker31vivas/personal-finance-app)
+👉 [**View frontend repository →**](https://github.com/wilker31vivas/personal-finance-web)
 
 🌐 [**View frontend demo →**](https://wilker-finance-app.netlify.app/)
 
