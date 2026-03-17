@@ -11,7 +11,7 @@ app.disable("x-powered-by");
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN.includes(",") 
+    origin: process.env.CORS_ORIGIN.includes(",")
       ? process.env.CORS_ORIGIN.split(",")
       : process.env.CORS_ORIGIN,
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
@@ -26,5 +26,7 @@ app.use("/api/categories", categoriesRouter);
 const PORT = process.env.PORT ?? 3000;
 
 app.listen(PORT, () => {
-   console.log(`Servidor ejecutándose en puerto ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
+
+export default app

@@ -1,8 +1,8 @@
 export const transactionType = ["expense", "income"];
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const transaction = require("./transaction.json");
-const categories = require("./categories.json");
+const transaction = require("./data/transaction.json");
+const categories = require("./data/categories.json");
 
 export function getCategories() {
   return categories;
