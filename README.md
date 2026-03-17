@@ -235,10 +235,3 @@ This backend is consumed by a React + TypeScript application.
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-<p align="center">
-Developed by <a href="https://github.com/wilker31vivas">Wilker Vivas</a> ·
-<a href="[https://personal-finance-api-jbd4.onrender.com](https://personal-finance-api-jbd4.onrender.com/)">View live API</a>
-</p>
