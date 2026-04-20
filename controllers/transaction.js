@@ -1,4 +1,6 @@
-import { TransactionsModel } from "../models/transaction.js";
+//import { TransactionsModel } from "../models/transaction.js";
+import { TransactionsModel } from "../models/mysql/transaction.js";
+
 import {
   validateTransactionPartial,
   validateTransaction,
