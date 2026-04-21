@@ -12,43 +12,71 @@ const connection = await mysql.createConnection(config);
 
 export class TransactionsModel {
   static async getAll({ type, category, month, year }) {
-    if (category) {
-      try {
-        const lowerCaseCategory = category.toLowerCase();
-
-        const [transactions] = await connection.query(
-          `SELECT 
+    try {
+      let query = ` 
+            SELECT 
                 bin_to_uuid(tf.transaction_id) as id, 
-                tf.description, 
-                tf.amount, 
-                tf.date 
+                t.description, 
+                t.amount, 
+                t.date 
              FROM transaction_full tf
              INNER JOIN transactions t ON tf.transaction_id = t.id
-             INNER JOIN category c ON tf.category_id = c.id
-             WHERE LOWER(c.name) = ?;`,
-          [lowerCaseCategory],
-        );
+        `;
 
-        return transactions ?? [];
-      } catch (error) {
-        console.error("Error fetching transactions by category:", error);
-        throw error;
+      const params = [];
+
+      if (category) {
+        query += `INNER JOIN category c ON tf.category_id = c.id`;
       }
+
+      if (type) {
+        query += `INNER JOIN type_transaction tt ON tf.type_id = tt.id`;
+      }
+
+      const whereConditions = [];
+
+      if (category) {
+        whereConditions.push(`LOWER(c.name) = ?`);
+        params.push(category.toLowerCase());
+      }
+
+      if (type) {
+        whereConditions.push(`LOWER(tt.name) = ?`);
+        params.push(type.toLowerCase());
+      }
+
+      if (month) {
+        whereConditions.push(`MONTH(t.date) = ?`);
+        params.push(Number(month));
+      }
+
+      if (year) {
+        whereConditions.push(`YEAR(t.date) = ?`);
+        params.push(Number(year));
+      }
+
+      if (whereConditions.length > 0) {
+        query += ` WHERE ${whereConditions.join(" AND ")}`;
+      }
+
+      query += `;`;
+      console.log("Query ejecutada:", query, "Parámetros:", params);
+
+      const [transactions] = await connection.query(query, params);
+      return transactions ?? [];
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+      throw error;
     }
-
-    const [transactions] = await connection.query(
-      "SELECT bin_to_uuid(id) id, amount, description, date FROM financesdb.transactions;",
-    );
-
-    return transactions;
   }
 
   static async getById({ id }) {
-     const [transactions] = await connection.query(
-      "SELECT bin_to_uuid(id) id, amount, description, date FROM financesdb.transactions where id = uuid_to_bin(?);", [id],
+    const [transactions] = await connection.query(
+      "SELECT bin_to_uuid(id) id, amount, description, date FROM financesdb.transactions where id = uuid_to_bin(?);",
+      [id],
     );
 
-    if (transactions.length === 0) return null
+    if (transactions.length === 0) return null;
 
     return transactions[0];
   }
