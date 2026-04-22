@@ -12,7 +12,7 @@ Content-Type: application/json
     "amount": 12,
     "category": "Health",
     "description": "comprar medicina",
-    "date": "26-02-2026"
+    "date": "2026-02-26"
 }
 
 ### Filtrar transações &category=other&month=11&year=2024

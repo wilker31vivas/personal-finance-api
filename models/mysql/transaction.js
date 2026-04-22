@@ -65,8 +65,7 @@ export class TransactionsModel {
       const [transactions] = await connection.query(query, params);
       return transactions ?? [];
     } catch (error) {
-      console.error("Error fetching transactions:", error);
-      throw error;
+      throw new Error("Error fetching transactions:");
     }
   }
 
@@ -81,9 +80,37 @@ export class TransactionsModel {
     return transactions[0];
   }
 
-  static async update(id, input) {}
+  static async create(input) {
+    const { type, amount, category, description, date } = input;
 
-  static async create(input) {}
+    const [uuidResult] = await connection.query("SELECT UUID() uuid;");
+    const [{ uuid }] = uuidResult;
+
+    try {
+      await connection.query(
+        `insert into transactions (id, description, amount, date) 
+        values (uuid_to_bin("${uuid}"), ?,?,?);`,
+        [description, amount, date],
+      );
+    } catch (e) {
+        throw new Error('Error creating transaction')
+    }
+
+    const [transaction] = await connection.query(
+        `SELECT 
+                bin_to_uuid(id) as id, 
+                description, 
+                amount, 
+                date 
+             FROM transactions
+             where id = uuid_to_bin(?);
+        `, [uuid]
+    )
+
+    return transaction[0]
+  }
+
+  static async update(id, input) {}
 
   static async updateCategory(oldCategory, newCategory) {}
 
