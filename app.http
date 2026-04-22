@@ -19,7 +19,7 @@ Content-Type: application/json
 GET {{baseUrl}}/api/transactions?category=food&month=1&year=2026
 
 ### Obter transação por ID
-GET {{baseUrl}}/api/transactions/5505d55d-3dbf-11f1-b596-ed727f14e600
+GET {{baseUrl}}/api/transactions/e4d1a2dc-3e36-11f1-b18d-ed727f14e600
 
 ### Atualizar uma transação
 PATCH {{baseUrl}}/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Excluir uma transação
-DELETE {{baseUrl}}/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+DELETE {{baseUrl}}/api/transactions/9ba642ca-3e37-11f1-b18d-ed727f14e600
 
 ### Ver o saldo
 GET {{baseUrl}}/api/stats/balance

@@ -93,26 +93,41 @@ export class TransactionsModel {
         [description, amount, date],
       );
     } catch (e) {
-        throw new Error('Error creating transaction')
+      throw new Error("Error creating transaction");
     }
 
     const [transaction] = await connection.query(
-        `SELECT 
+      `SELECT 
                 bin_to_uuid(id) as id, 
                 description, 
                 amount, 
                 date 
              FROM transactions
              where id = uuid_to_bin(?);
-        `, [uuid]
-    )
+        `,
+      [uuid],
+    );
 
-    return transaction[0]
+    return transaction[0];
   }
 
   static async update(id, input) {}
 
   static async updateCategory(oldCategory, newCategory) {}
 
-  static async delete({ id }) {}
+  static async delete({ id }) {
+    try {
+      await connection.query(
+        `
+          delete from transactions where id = uuid_to_bin(?);
+        `,
+        [id],
+      );
+
+      return true;
+    } catch (e) {
+      return false;
+      throw new Error("Error delete transaction");
+    }
+  }
 }
