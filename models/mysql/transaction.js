@@ -60,7 +60,6 @@ export class TransactionsModel {
       }
 
       query += `;`;
-      console.log("Query ejecutada:", query, "Parámetros:", params);
 
       const [transactions] = await connection.query(query, params);
       return transactions ?? [];
@@ -111,7 +110,60 @@ export class TransactionsModel {
     return transaction[0];
   }
 
-  static async update(id, input) {}
+  static async update(id, input) {
+    const { type, amount, description, date } = input;
+
+    try {
+      const params = [];
+      const values = [];
+
+      if (amount) {
+        values.push(`amount = ?`);
+        params.push(Number(amount));
+      }
+
+      // if (type) {
+      //   values.push(`type = ?`);
+      //   params.push(type.toLowerCase());
+      // }
+
+      if (description) {
+        values.push(`description = ?`);
+        params.push(description);
+      }
+
+      if (date) {
+        values.push(`date = ?`);
+        params.push(date);
+      }
+
+      const query = `UPDATE transactions SET ${values.join(" , ")} WHERE id = uuid_to_bin(?);`;
+      params.push(id);
+
+      const result = await connection.query(query, params);
+
+      if (result.affectedRows === 0) {
+        throw new Error("Transacción no encontrada");
+        return false;
+      }
+
+      const [transaction] = await connection.query(
+        `SELECT 
+        bin_to_uuid(id) as id, 
+        description, 
+        amount, 
+        date 
+      FROM transactions
+      WHERE id = uuid_to_bin(?);`,
+        [id],
+      );
+
+      return transaction[0];
+    } catch (error) {
+      return false;
+      throw new Error("Error update transaction");
+    }
+  }
 
   static async updateCategory(oldCategory, newCategory) {}
 
