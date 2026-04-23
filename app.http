@@ -22,16 +22,17 @@ GET {{baseUrl}}/api/transactions?category=food&month=1&year=2026
 GET {{baseUrl}}/api/transactions/e4d1a2dc-3e36-11f1-b18d-ed727f14e600
 
 ### Atualizar uma transação
-PATCH {{baseUrl}}/api/transactions/e5965254-3e3c-11f1-b18d-ed727f14e600
+PATCH {{baseUrl}}/api/transactions/d8fa9d8e-3ebf-11f1-ae7e-8cb0e9303209
 Content-Type: application/json
 
 {
-    "amount" : 251,
-    "description": "comprar comida"
+    "amount" : 252,
+    "description": "comprar telefono",
+    "type": "income"
 }
 
 ### Excluir uma transação
-DELETE {{baseUrl}}/api/transactions/ac175149-3e37-11f1-b18d-ed727f14e600
+DELETE {{baseUrl}}/api/transactions/f6ff11bb-3eb9-11f1-ae7e-8cb0e9303209
 
 ### Ver o saldo
 GET {{baseUrl}}/api/stats/balance

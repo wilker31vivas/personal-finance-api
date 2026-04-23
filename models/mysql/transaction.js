@@ -79,7 +79,6 @@ export class TransactionsModel {
     return transactions[0];
   }
 
-  // Crear transacción con type y category
   static async create(input) {
     const { type, amount, category, description, date } = input;
 
@@ -123,9 +122,8 @@ export class TransactionsModel {
     return transaction[0];
   }
 
-  // Actualizar transacción con type y category
   static async update(id, input) {
-    const { type, amount, description, date } = input;
+    const { type, amount, category, description, date } = input;
 
     try {
       const params = [];
@@ -135,11 +133,6 @@ export class TransactionsModel {
         values.push(`amount = ?`);
         params.push(Number(amount));
       }
-
-      // if (type) {
-      //   values.push(`type = ?`);
-      //   params.push(type.toLowerCase());
-      // }
 
       if (description) {
         values.push(`description = ?`);
@@ -151,31 +144,44 @@ export class TransactionsModel {
         params.push(date);
       }
 
-      const query = `UPDATE transactions SET ${values.join(" , ")} WHERE id = uuid_to_bin(?);`;
-      params.push(id);
+      if (values.length > 0) {
+        const queryTransactions = `UPDATE transactions SET ${values.join(", ")} WHERE id = uuid_to_bin(?);`;
+        params.push(id);
+        const result = await connection.query(queryTransactions, params);
+        if (result.affectedRows === 0) {
+          return false;
+        }
+      }
 
-      const result = await connection.query(query, params);
+      if (type) {
+        const queryType = `UPDATE transaction_full SET type_id = (SELECT id FROM type_transaction WHERE LOWER(name) = ?) WHERE transaction_id = uuid_to_bin(?);`;
+        await connection.query(queryType, [type.toLowerCase(), id]);
+      }
 
-      if (result.affectedRows === 0) {
-        throw new Error("Transacción no encontrada");
-        return false;
+      if (category) {
+        const queryCategory = `UPDATE transaction_full SET category_id = (SELECT id FROM category WHERE LOWER(name) = ?) WHERE transaction_id = uuid_to_bin(?);`;
+        await connection.query(queryCategory, [category.toLowerCase(), id]);
       }
 
       const [transaction] = await connection.query(
         `SELECT 
-        bin_to_uuid(id) as id, 
-        description, 
-        amount, 
-        date 
-      FROM transactions
-      WHERE id = uuid_to_bin(?);`,
-        [id],
+          bin_to_uuid(t.id) as id, 
+          t.description, 
+          t.amount, 
+          t.date,
+          c.name AS category,
+          tt.name AS type
+        FROM transaction_full tf
+        INNER JOIN transactions t ON tf.transaction_id = t.id
+        INNER JOIN category c ON tf.category_id = c.id
+        INNER JOIN type_transaction tt ON tf.type_id = tt.id
+        WHERE t.id = uuid_to_bin(?);`,
+        [id]
       );
 
-      return transaction[0];
+      return transaction[0] || null;
     } catch (error) {
-      return false;
-      throw new Error("Error update transaction");
+      throw new Error("Error updating transaction");
     }
   }
 
