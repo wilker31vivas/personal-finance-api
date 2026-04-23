@@ -79,6 +79,7 @@ export class TransactionsModel {
     return transactions[0];
   }
 
+  // Crear transacción con type y category
   static async create(input) {
     const { type, amount, category, description, date } = input;
 
@@ -91,18 +92,30 @@ export class TransactionsModel {
         values (uuid_to_bin("${uuid}"), ?,?,?);`,
         [description, amount, date],
       );
+
+      await connection.query(
+        `insert into transaction_full (transaction_id, category_id, type_id)
+        values (uuid_to_bin("${uuid}"), (select id from category where name = LOWER(?)), (select id from type_transaction where name = LOWER(?)));
+        `,
+        [category, type],
+      );
     } catch (e) {
       throw new Error("Error creating transaction");
     }
 
     const [transaction] = await connection.query(
       `SELECT 
-                bin_to_uuid(id) as id, 
-                description, 
-                amount, 
-                date 
-             FROM transactions
-             where id = uuid_to_bin(?);
+                bin_to_uuid(t.id) as id, 
+                t.description, 
+                t.amount, 
+                t.date,
+                c.name AS category,
+                tt.name AS type
+             FROM transaction_full tf
+             INNER JOIN transactions t ON tf.transaction_id = t.id
+             INNER JOIN category c ON tf.category_id = c.id
+             INNER JOIN type_transaction tt ON tf.type_id = tt.id
+             WHERE t.id = uuid_to_bin(?)
         `,
       [uuid],
     );
@@ -110,6 +123,7 @@ export class TransactionsModel {
     return transaction[0];
   }
 
+  // Actualizar transacción con type y category
   static async update(id, input) {
     const { type, amount, description, date } = input;
 
