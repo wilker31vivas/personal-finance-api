@@ -2,65 +2,100 @@ import { getCategories, getTransactions } from "../utils.js";
 const categories = getCategories();
 import { TransactionsModel } from "../models/transaction.js";
 const transactions = getTransactions();
+import mysql from "mysql2/promise";
+
+const config = {
+  host: "127.0.0.1",
+  user: "root",
+  port: 3306,
+  password: "",
+  database: "financesdb",
+};
+
+const connection = await mysql.createConnection(config);
 
 export class CategoriesModel {
   static async getAll() {
-    return categories;
+    try {
+      const [categories] = await connection.query("SELECT * FROM category;");
+
+      return categories;
+    } catch (error) {
+      throw new Error("Error fetching categories:");
+    }
   }
 
   static async getById({ id }) {
-    return categories.find((c) => c.id === id);
+    try {
+      const [category] = await connection.query(
+        "SELECT * FROM category WHERE id = (?);",
+        [id],
+      );
+
+      return category;
+    } catch (error) {
+      throw new Error("Error fetching category:");
+    }
   }
 
   static async create(input) {
-    const newCategory = {
-      id: crypto.randomUUID(),
-      name: input.name.toLowerCase(),
-    };
+    try {
+      await connection.query("INSERT INTO category (name) VALUES (?);", [
+        input.name,
+      ]);
+    } catch (error) {
+      throw new Error("Error creating category:", error);
+    }
 
-    const exists = categories.some(
-      (c) => c.name.toLowerCase() === input.name.trim().toLowerCase(),
+    const [rows] = await connection.query(
+      "SELECT * FROM category WHERE id = LAST_INSERT_ID();",
     );
-    if (exists) return null;
 
-    categories.push(newCategory);
-
-    return newCategory;
+    return rows[0];
   }
 
   static async update(id, input) {
-    const categoryIndex = categories.findIndex((c) => c.id === id);
-    if (categoryIndex === -1) return false;
+    try {
+      const result = await connection.query(
+        "UPDATE category set name = LOWER(?) where id = ?;",
+        [input.name, id],
+      );
 
-    const oldCategoryName = categories[categoryIndex].name;
-
-    const partialCategory = {
-      ...categories[categoryIndex],
-      name: input.name.toLowerCase(),
-    };
-
-    categories[categoryIndex] = partialCategory;
-
-    if (oldCategoryName !== input.name) {
-      await TransactionsModel.updateCategory(oldCategoryName, input.name);
+      if (result.affectedRows === 0) {
+        return false;
+      }
+    } catch (error) {
+      throw new Error("Error updating category:", error);
     }
 
-    return partialCategory;
+    const [rows] = await connection.query(
+      "SELECT * FROM category WHERE id = ?;",
+      [id],
+    );
+
+    return rows[0] || null;
   }
 
   static async delete(id) {
-    const categoryIndex = categories.findIndex((c) => c.id === id);
-    if (categoryIndex === -1) return { isExists: false, isUsed: false };
+    try {
+      const category = await connection.query(
+        `SELECT * FROM Category where id = ?`,
+        [id],
+      );
+      console.log(category[0] === [])
+      if (category[0] === []) return { isExists: false, isUsed: false };
 
-    const isUsed = transactions.some(
-      (t) =>
-        t.category.toLowerCase() ===
-        categories[categoryIndex].name.toLowerCase(),
-    );
-    if (isUsed) return { isExists: true, isUsed: true };
+      // comprovar se esta usando a categoria
+      // const isUsed = transactions.some(
+      //   (t) =>
+      //     t.category.toLowerCase() ===
+      //     categories[categoryIndex].name.toLowerCase(),
+      // );
+      
+      //se a categoria se esta usando : if (isUsed) return { isExists: true, isUsed: true };
 
-    categories.splice(categoryIndex, 1);
-
-    return { isExists: true, isUsed: false };
+      //eliminar categoria e return { isExists: true, isUsed: false };
+    } catch (error) {}
+    
   }
 }
