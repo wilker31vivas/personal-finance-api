@@ -2,8 +2,7 @@ import db from "../../config/database.js";
 
 export class TransactionsModel {
   static async getAll({ type, category, month, year }) {
-    try {
-      let query = `
+    let query = `
       SELECT 
           tf.transaction_id as id, 
           t.description, 
@@ -17,48 +16,64 @@ export class TransactionsModel {
         INNER JOIN type_transaction tt ON tf.type_id = tt.id
     `;
 
-      const whereConditions = [];
-      const args = {};
+    const whereConditions = [];
+    const args = {};
 
-      if (category) {
-        whereConditions.push(`LOWER(c.name) = :category`);
-        args.category = category;
-      }
-
-      if (type) {
-        whereConditions.push(`LOWER(tt.name) = :type`);
-        args.type = type;
-      }
-
-      if (month) {
-        whereConditions.push(`EXTRACT(MONTH FROM t.created_at) = :month`);
-        args.month = month;
-      }
-
-      if (year) {
-        whereConditions.push(`EXTRACT(YEAR FROM t.created_at) = :year`);
-        args.month = year;
-      }
-
-      if (whereConditions.length > 0) {
-        query += `WHERE ${whereConditions.join(" AND ")}`;
-      }
-
-      query += ` ORDER BY t.created_at DESC;`;
-
-      const result = await db.execute({
-        sql: query,
-        args: { ...args },
-      });
-      return result.rows;
-    } catch (error) {
-      console.error("Error fetching transactions:", error);
-      throw new Error("Error fetching transactions");
+    if (category) {
+      whereConditions.push(`LOWER(c.name) = :category`);
+      args.category = category;
     }
+
+    if (type) {
+      whereConditions.push(`LOWER(tt.name) = :type`);
+      args.type = type;
+    }
+
+    if (month) {
+      whereConditions.push(`EXTRACT(MONTH FROM t.created_at) = :month`);
+      args.month = month;
+    }
+
+    if (year) {
+      whereConditions.push(`EXTRACT(YEAR FROM t.created_at) = :year`);
+      args.month = year;
+    }
+
+    if (whereConditions.length > 0) {
+      query += `WHERE ${whereConditions.join(" AND ")}`;
+    }
+
+    query += ` ORDER BY t.created_at DESC;`;
+
+    const result = await db.execute({
+      sql: query,
+      args: { ...args },
+    });
+    return result.rows;
   }
 
   static async getById({ id }) {
-    return transactions.find((t) => t.id === id);
+    const result = await db.execute({
+      sql: `
+      SELECT 
+          tf.transaction_id as id, 
+          t.description, 
+          t.amount, 
+          t.created_at,
+          c.name AS category,
+          tt.name AS type
+        FROM transaction_full tf
+        INNER JOIN transactions t ON tf.transaction_id = t.id
+        INNER JOIN categories c ON tf.category_id = c.id
+        INNER JOIN type_transaction tt ON tf.type_id = tt.id
+        WHERE tf.transaction_id = :id
+    `,
+      args: { id }
+    });
+
+    const transaction = result.rows[0];
+
+    return transaction;
   }
 
   static async update(id, input) {

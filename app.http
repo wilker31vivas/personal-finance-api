@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Filtrar transações &category=other&month=11&year=2024
-GET {{baseUrl}}/api/transactions?category=other
+GET {{baseUrl}}/api/transactions?category=salary
 
 ### Obter transação por ID
 GET {{baseUrl}}/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
