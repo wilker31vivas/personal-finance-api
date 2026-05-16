@@ -1,4 +1,4 @@
-import { TransactionsModel } from "../models/transaction.js";
+import { TransactionsModel } from "../models/sqlite/transaction.js";
 import {
   validateTransactionPartial,
   validateTransaction,
