@@ -4,16 +4,15 @@ export class TransactionsModel {
   static async getAll({ type, category, month, year }) {
     let query = `
       SELECT 
-          tf.transaction_id as id, 
+          t.id, 
           t.description, 
           t.amount, 
           t.created_at,
           c.name AS category,
           tt.name AS type
-        FROM transaction_full tf
-        INNER JOIN transactions t ON tf.transaction_id = t.id
-        INNER JOIN categories c ON tf.category_id = c.id
-        INNER JOIN type_transaction tt ON tf.type_id = tt.id
+        FROM transactions t
+        INNER JOIN categories c ON t.category_id = c.id
+        INNER JOIN type_transaction tt ON t.type_id = tt.id
     `;
 
     const whereConditions = [];
@@ -56,17 +55,16 @@ export class TransactionsModel {
     const result = await db.execute({
       sql: `
       SELECT 
-          tf.transaction_id as id, 
+          t.id, 
           t.description, 
           t.amount, 
           t.created_at,
           c.name AS category,
           tt.name AS type
-        FROM transaction_full tf
-        INNER JOIN transactions t ON tf.transaction_id = t.id
-        INNER JOIN categories c ON tf.category_id = c.id
-        INNER JOIN type_transaction tt ON tf.type_id = tt.id
-        WHERE tf.transaction_id = :id
+        FROM transactions t
+        INNER JOIN categories c ON t.category_id = c.id
+        INNER JOIN type_transaction tt ON t.type_id = tt.id
+        WHERE t.id = :id
     `,
       args: { id },
     });
@@ -79,23 +77,16 @@ export class TransactionsModel {
   static async create(input) {
     const { category, amount, description, type } = input;
 
-    const firstInsert = await db.execute({
-      sql: "INSERT INTO transactions (description, amount) values (:description, :amount)",
-      args: { description, amount },
-    });
-
-    const transactionId = firstInsert.lastInsertRowid;
-
     const result = await db.execute({
-      sql: `insert into transaction_full (transaction_id, category_id, type_id) 
-            values (:transaction_id, 
+      sql: `insert into transactions (description, amount, category_id, type_id) 
+            values (:description, :amount, 
             (select id from categories where name = :category), 
             (select id from type_transaction where name = :type_transaction)
         )`,
-      args: { transaction_id: transactionId, category, type_transaction: type },
+      args: { description, amount, category, type_transaction: type },
     });
 
-    const transaction = await this.getById({ id: Number(transactionId) });
+    const transaction = await this.getById({ id: Number(result.lastInsertRowid) });
     return transaction;
   }
 

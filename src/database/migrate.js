@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import db from "../config/database.js";
-import { insertTransactionFull, getTransactions, getTransactionsWithDetails } from "./playground.js";
+import { insertTransaction, getTransactions } from "./playground.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,16 +22,11 @@ async function migrate() {
   }
 }
 
-// insertTransactionFull("Monthly salary payment", 3500, 'salary', 'income');
+
 async function getTransactionsAsync() {
   const result = await getTransactions()
   console.log(result)
 }
 
-async function getTransactionsFullAsync() {
-  const result = await getTransactionsWithDetails()
-  console.log(result)
-}
-
+//insertTransaction('Monthly salary payment', 3500, 'salary', 'income')
 getTransactionsAsync()
-getTransactionsFullAsync()
