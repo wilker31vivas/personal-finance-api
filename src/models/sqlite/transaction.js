@@ -36,7 +36,7 @@ export class TransactionsModel {
 
     if (year) {
       whereConditions.push(`EXTRACT(YEAR FROM t.created_at) = :year`);
-      args.month = year;
+      args.year = year;
     }
 
     if (whereConditions.length > 0) {
@@ -68,11 +68,34 @@ export class TransactionsModel {
         INNER JOIN type_transaction tt ON tf.type_id = tt.id
         WHERE tf.transaction_id = :id
     `,
-      args: { id }
+      args: { id },
     });
 
     const transaction = result.rows[0];
 
+    return transaction;
+  }
+
+  static async create(input) {
+    const { category, amount, description, type } = input;
+
+    const firstInsert = await db.execute({
+      sql: "INSERT INTO transactions (description, amount) values (:description, :amount)",
+      args: { description, amount },
+    });
+
+    const transactionId = firstInsert.lastInsertRowid;
+
+    const result = await db.execute({
+      sql: `insert into transaction_full (transaction_id, category_id, type_id) 
+            values (:transaction_id, 
+            (select id from categories where name = :category), 
+            (select id from type_transaction where name = :type_transaction)
+        )`,
+      args: { transaction_id: transactionId, category, type_transaction: type },
+    });
+
+    const transaction = await this.getById({ id: Number(transactionId) });
     return transaction;
   }
 
@@ -89,21 +112,6 @@ export class TransactionsModel {
     transactions[transactionIndex] = partialTransaction;
 
     return partialTransaction;
-  }
-
-  static async create(input) {
-    const newTransaction = {
-      id: crypto.randomUUID(),
-      category: input.category.toLowerCase(),
-      amount: input.amount,
-      date: input.date || new Date().toISOString().split("T")[0],
-      description: input.description,
-      type: input.type,
-    };
-
-    transactions.push(newTransaction);
-
-    return newTransaction;
   }
 
   static async updateCategory(oldCategory, newCategory) {

@@ -9,17 +9,17 @@ Content-Type: application/json
 
 {
     "type": "expense",
-    "amount": 12,
-    "category": "Health",
-    "description": "comprar medicina",
-    "date": "26-02-2026"
+    "amount": 120,
+    "category": "food",
+    "description": "Grocery shopping",
+    "date": "2024-01-12"
 }
 
 ### Filtrar transações &category=other&month=11&year=2024
 GET {{baseUrl}}/api/transactions?category=salary
 
 ### Obter transação por ID
-GET {{baseUrl}}/api/transactions/c6d2a0bb-d9c4-4b34-9d6b-4da3b8cd14e1
+GET {{baseUrl}}/api/transactions/2
 
 ### Atualizar uma transação
 PATCH {{baseUrl}}/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
