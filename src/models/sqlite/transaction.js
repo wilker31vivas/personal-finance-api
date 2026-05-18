@@ -98,15 +98,25 @@ export class TransactionsModel {
     const updates = [];
     const args = { id };
 
-    const allowedFields = ["type", "description", "category_id", "amount"];
+    const allowedFields = ["type", "description", "category", "amount"];
 
     for (const field of allowedFields) {
       if (fields[field] !== undefined) {
-        updates.push(`${field} = :${field}`);
-        args[field] = fields[field];
+        if (field !== "category") {
+          updates.push(`${field} = :${field}`);
+          args[field] = fields[field];
+        } else {
+          updates.push(
+            `category_id = (select id from categories where name = :category)`,
+          );
+          args.category = fields[field];
+        }
       }
     }
 
+    if (updates.length === 0) {
+      throw new Error("No valid fields provided for update");
+    }
     await db.execute({
       sql: `UPDATE transactions SET ${updates.join(", ")} WHERE id = :id`,
       args,

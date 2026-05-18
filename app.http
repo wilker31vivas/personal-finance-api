@@ -26,7 +26,7 @@ PATCH {{baseUrl}}/api/transactions/2
 Content-Type: application/json
 
 {
-    "amount" : 251
+    "category" : "shopping"
 }
 
 ### Excluir uma transação
