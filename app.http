@@ -22,7 +22,7 @@ GET {{baseUrl}}/api/transactions?category=salary
 GET {{baseUrl}}/api/transactions/2
 
 ### Atualizar uma transação
-PATCH {{baseUrl}}/api/transactions/a1f02605-aaaa-4a11-b111-000000000132
+PATCH {{baseUrl}}/api/transactions/2
 Content-Type: application/json
 
 {

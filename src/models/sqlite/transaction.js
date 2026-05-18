@@ -86,23 +86,33 @@ export class TransactionsModel {
       args: { description, amount, category, type_transaction: type },
     });
 
-    const transaction = await this.getById({ id: Number(result.lastInsertRowid) });
+    const transaction = await this.getById({
+      id: Number(result.lastInsertRowid),
+    });
     return transaction;
   }
 
-  static async update(id, input) {
-    const transactionIndex = transactions.findIndex((t) => t.id === id);
+  static async update(id, fields) {
+    await this.getById({ id });
 
-    if (transactionIndex === -1) return false;
+    const updates = [];
+    const args = { id };
 
-    const partialTransaction = {
-      ...transactions[transactionIndex],
-      ...input,
-    };
+    const allowedFields = ["type", "description", "category_id", "amount"];
 
-    transactions[transactionIndex] = partialTransaction;
+    for (const field of allowedFields) {
+      if (fields[field] !== undefined) {
+        updates.push(`${field} = :${field}`);
+        args[field] = fields[field];
+      }
+    }
 
-    return partialTransaction;
+    await db.execute({
+      sql: `UPDATE transactions SET ${updates.join(", ")} WHERE id = :id`,
+      args,
+    });
+
+    return this.getById({ id });
   }
 
   static async updateCategory(oldCategory, newCategory) {
